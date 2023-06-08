@@ -46,13 +46,7 @@ main:
 
 //------------------------------------------ Fin Definicion de variables ------------------------------------------//
 
-	mov x16, 150					// Posicion 00 de Arbol de x
-	mov x17, 100					// Posicion 00 de Arbol de y
-	bl Arbol
-	
-	bl Flor
-
-	bl Leer
+	bl Fondo_Paralelo
 
 	bl InfLoop
 
@@ -702,9 +696,41 @@ main:
 		mov x4, 20						// Tamaño de x
 		bl Cuadrado
 
-		
+		mov x16, 150					// Posicion 00 de Arbol de x
+		mov x17, 120					// Posicion 00 de Arbol de y
+		bl Arbol
 
-		mov x0, x20
+		mov x16, 10						// Posicion 00 de Arbol de x
+		mov x17, 110					// Posicion 00 de Arbol de y
+		bl Arbol
+
+		mov x16, 100					// Posicion 00 de Arbol de x
+		mov x17, 150					// Posicion 00 de Arbol de y
+		bl Arbol
+
+		mov x16, 210					// Posicion 00 de Arbol de x
+		mov x17, 110					// Posicion 00 de Arbol de y
+		bl Arbol
+
+		mov x16, 360					// Posicion 00 de Arbol de x
+		mov x17, 120					// Posicion 00 de Arbol de y
+		bl Arbol
+
+		mov x16, 100					// Posicion 00 de Flor de x
+		mov x17, 330					// Posicion 00 de Flor de y
+		bl Flor
+
+		mov x16, 510					// Posicion 00 de Flor de x
+		mov x17, 360					// Posicion 00 de Flor de y
+		bl Flor
+
+		mov x16, 0					// Posicion 00 de Flor de x
+		mov x17, 360					// Posicion 00 de Flor de y
+		bl Flor
+
+		mov x16, 250					// Posicion 00 de Link de x
+		mov x17, 110					// Posicion 00 de Link de y
+		bl Link
 
 		ldr x30,[sp,#0]  				  
 		add sp,sp, #8
@@ -712,6 +738,65 @@ main:
 	ret
 
 //------------------------------------------ Fin Fondo Dia ------------------------------------------//
+
+
+//------------------------------------------ Fondo Paralelo ------------------------------------------//
+
+	Fondo_Paralelo:
+
+		mov x15, 0						// Cordenada de y
+		mov x14, 0						// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0xFF, lsl 16
+		movk x10, 0xFFFF, lsl 00		// Color
+		mov x5, HALF_HEIGH				// Tamaño de y
+		mov x4, SCREEN_WIDTH			// Tamaño de x
+		bl Cuadrado
+
+		mov x8, 110						//radio
+		mov x15, HALF_HEIGH				// Cordenada de y
+		mov x14, 140						// Cordenada de x
+		movz x10, 0xC0, lsl 16	    
+		movk x10, 0xEAFF, lsl 00 
+		bl Calcular_Direccion
+		bl circulo
+
+		mov x8, 20						//radio
+		mov x15, 40			// Cordenada de y
+		mov x14, 140						// Cordenada de x
+		movz x10, 0xC0, lsl 16	    
+		movk x10, 0xEAFF, lsl 00 
+		bl Calcular_Direccion
+		bl circulo
+
+		mov x8, 40						//radio
+		mov x15, 100					// Cordenada de y
+		mov x14, 250					// Cordenada de x
+		movz x10, 0xC0, lsl 16	    
+		movk x10, 0xEAFF, lsl 00 
+		bl Calcular_Direccion
+		bl circulo
+
+		mov x8, 10						//radio
+		mov x15, 30						// Cordenada de y
+		mov x14, 450					// Cordenada de x
+		movz x10, 0xC0, lsl 16	    
+		movk x10, 0xEAFF, lsl 00 
+		bl Calcular_Direccion
+		bl circulo
+
+		mov x8, 30						//radio
+		mov x15, 300					// Cordenada de y
+		mov x14, 300					// Cordenada de x
+		movz x10, 0xC0, lsl 16	    
+		movk x10, 0xEAFF, lsl 00 
+		bl Calcular_Direccion
+		bl circulo
+
+	ret
+
+//------------------------------------------ Fin Fondo Paralelo ------------------------------------------//
+
 
 
 //------------------------------------------ Flor ------------------------------------------//
@@ -722,78 +807,95 @@ main:
 		sub sp,sp, #8  
 		str x30,[sp,#0]
 
-		mov x8, 7									//radio
-		mov x15, 340									
-		mov x14, 179		
+		mov x8, 7						//radio
+		add x19, x17, 50
+		add x18, x16, 63
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0xCC, lsl 16	    
 		movk x10, 0x0086, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 7									//radio
-		mov x15, 340									
-		mov x14, 161		
+		mov x8, 7						//radio
+		add x19, x17, 50
+		add x18, x16, 37
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0xCC, lsl 16	    
 		movk x10, 0x0086, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 7									//radio
-		mov x15, 360									
-		mov x14, 161		
+		mov x8, 7						//radio
+		add x19, x17, 63
+		add x18, x16, 50
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x	
 		movz x10, 0xCC, lsl 16	    
 		movk x10, 0x0086, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 7									//radio
-		mov x15, 360									
-		mov x14, 179		
+		mov x8, 7						//radio
+		add x19, x17, 37
+		add x18, x16, 50
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0xCC, lsl 16	    
 		movk x10, 0x0086, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 8									//radio
-		mov x15, 350									
-		mov x14, 183		
+		mov x8, 8						//radio
+		add x19, x17, 42
+		add x18, x16, 41
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0x80, lsl 16	    
 		movk x10, 0x0054, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 8									//radio
-		mov x15, 337									
-		mov x14, 170		
+		mov x8, 8						//radio
+		add x19, x17, 57
+		add x18, x16, 41
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0x80, lsl 16	    
 		movk x10, 0x0054, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 8									//radio
-		mov x15, 363									
-		mov x14, 170		
+		mov x8, 8						//radio
+		add x19, x17, 42
+		add x18, x16, 57
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0x80, lsl 16	    
 		movk x10, 0x0054, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 8									//radio
-		mov x15, 350									
-		mov x14, 157		
+		mov x8, 8						//radio
+		add x19, x17, 57
+		add x18, x16, 57
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0x80, lsl 16	    
 		movk x10, 0x0054, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
-		mov x8, 8									//radio
-		mov x15, 350								//centro
-		mov x14, 170		
+		mov x8, 8						//radio
+		add x19, x17, 50
+		add x18, x16, 50
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
 		movz x10, 0xFF, lsl 16	    
 		movk x10, 0xF300, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
-
 
 		ldr x30,[sp,#0]  				  
 		add sp,sp, #8
@@ -3541,6 +3643,7 @@ main:
 		mul x11, x12, x3
 		add x0, x0, x11
 		cbnz x25, loop_tria_1  			// Si no es la última fila, saltostur w10,[x20]
+
 		mov x0, x20
 
 	ret
@@ -3725,6 +3828,7 @@ main:
 		ldr x30,[sp,#0]  				//cargo x15 y x14 a sus valores originales y decremento la pila en 2  
 		add sp,sp, #8 
 
+		mov x0,x20
 
 		ret
 
