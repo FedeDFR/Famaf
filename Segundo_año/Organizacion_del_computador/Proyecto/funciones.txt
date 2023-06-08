@@ -1,0 +1,2599 @@
+Link:
+
+	mov x16, xzr
+	mov x17, xzr
+	add x17, x17, 120				// Posicion 00 de Link de y
+	add x16, x16, 250				// Posicion 00 de Link de x
+
+//----- Escudo -----//
+
+	add x19, x17, 130
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x4E, lsl 16
+	movk x10, 0x342E, lsl 00		// Color
+	mov x5, 90						// Tamaño de y
+	mov x4, 90						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220
+	add x18, x16, 30 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x4E, lsl 16
+	movk x10, 0x342E, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 70						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x4E, lsl 16
+	movk x10, 0x342E, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 50						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 240
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x4E, lsl 16
+	movk x10, 0x342E, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120
+	add x18, x16, 10 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 100						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110
+	add x18, x16, 0 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 110						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230
+	add x18, x16, 30 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 240
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 250
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 260
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 240
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230
+	add x18, x16, 90 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220
+	add x18, x16, 10 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 240
+	add x18, x16, 30 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 250
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 260
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 270
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 260
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 250
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 240
+	add x18, x16, 90 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120
+	add x18, x16, 10 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 50						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110
+	add x18, x16, 0 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 60						// Tamaño de x
+	bl Cuadrado
+
+//----- Fin Escudo -----//
+
+//----- Cara -----//
+
+	add x19, x17, 80				// Cara grande
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xe0DB, lsl 00		// Color
+	mov x5, 60						// Tamaño de y
+	mov x4, 100						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80				// Linea del costado de la cara
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 60						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xe0DB, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 90						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xe0DB, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 70						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 160				//linea abajo de cara
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 70						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150				
+	add x18, x16, 150 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				// Linea negra derecha
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				// Ojo
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 110 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				// Nariz
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110
+	add x18, x16, 90 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 140 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+//----- Pelo -----//
+
+	add x19, x17, 70				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 50						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 40						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				// Ariba de oreja
+	add x18, x16, 170 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 70				
+	add x18, x16, 180 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 50						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 60
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 150						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 40				// Linea arriba larga
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 120						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 90
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80
+	add x18, x16, 80
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 70				// Fleco
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100				// Fleco
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 70
+	add x18, x16, 140 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80
+	add x18, x16, 130 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 90
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 60						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 70
+	add x18, x16, 10 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 60
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 50
+	add x18, x16, 30 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 40
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 30
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 100						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 60				
+	add x18, x16, 170 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 50				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 40				
+	add x18, x16, 150 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB2, lsl 16
+	movk x10, 0x8704, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+//----- Gorro -----//
+
+	add x19, x17, 10				
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 110						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 30				
+	add x18, x16, 150 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 30				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 50						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 50				
+	add x18, x16, 170 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 50				
+	add x18, x16, 180 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 70				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 60						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+	
+
+	add x19, x17, 20				// Borde
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 10				
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 0				
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 70						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 10				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 20				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 30				
+	add x18, x16, 200 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 40				
+	add x18, x16, 210 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 60				
+	add x18, x16, 220 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 70						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 210 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 170 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xe0DB, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				
+	add x18, x16, 180 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xe0DB, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xe0DB, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 200 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 180 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140				
+	add x18, x16, 170 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140				
+	add x18, x16, 180 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xE207, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+//----- Fin Gorrro -----//
+
+//----- Cuerpo -----//
+
+
+	add x19, x17, 150				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 40						// Tamaño de y
+	mov x4, 50						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 90						// Tamaño de y
+	mov x4, 80						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 160				
+	add x18, x16, 150 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 140 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 130 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 120 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 110 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 30 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xE0BD, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 50						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 210				
+	add x18, x16, 20 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 50						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 240				
+	add x18, x16, 90 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230				
+	add x18, x16, 110 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 70						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220				
+	add x18, x16, 110 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xB3, lsl 16
+	movk x10, 0x6C2D, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 70						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220				
+	add x18, x16, 120 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xEB3B, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220				
+	add x18, x16, 120 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220				
+	add x18, x16, 140 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230				
+	add x18, x16, 130 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xC107, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 180 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 60						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 250				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 250				
+	add x18, x16, 180 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 260				
+	add x18, x16, 80 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 120						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 250				
+	add x18, x16, 90 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x4D00, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 100						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 260				
+	add x18, x16, 70 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 270				
+	add x18, x16, 60 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 280				
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 280				
+	add x18, x16, 50 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 290				
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 300				
+	add x18, x16, 40 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 50						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 290				
+	add x18, x16, 90 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 280				
+	add x18, x16, 100 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 280				
+	add x18, x16, 90 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 270				
+	add x18, x16, 110 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 270				
+	add x18, x16, 150 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 280				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 300				
+	add x18, x16, 170 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 280				
+	add x18, x16, 170 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x8D, lsl 16
+	movk x10, 0x5524, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 290				
+	add x18, x16, 210 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 260				
+	add x18, x16, 200 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 270				
+	add x18, x16, 160 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150				
+	add x18, x16, 200 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 40						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 240 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x8000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150				
+	add x18, x16, 200 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 190 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 160				
+	add x18, x16, 240 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 250 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 260 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xE0BD, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 260 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 220 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 240 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x01, lsl 16
+	movk x10, 0x2908, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 250 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 210				
+	add x18, x16, 250 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 50						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				// 1																	
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 40						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				// 2
+	add x18, x16, 290 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120					
+	add x18, x16, 290 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				// 3
+	add x18, x16, 300 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 300 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100				// 4
+	add x18, x16, 310 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100				
+	add x18, x16, 310 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 90				// 5
+	add x18, x16, 320 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 90				
+	add x18, x16, 320 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80				//6
+	add x18, x16, 330 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80				
+	add x18, x16, 330 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 70				
+	add x18, x16, 340 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 70				
+	add x18, x16, 370 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100				
+	add x18, x16, 360 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 350 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				
+	add x18, x16, 340 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 330 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140				
+	add x18, x16, 320 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150				
+	add x18, x16, 310 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 160				
+	add x18, x16, 300 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 320 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 310 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 270 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 270 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x30, lsl 16
+	movk x10, 0x3D8C, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x30, lsl 16
+	movk x10, 0x3D8C, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 160				
+	add x18, x16, 270 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x30, lsl 16
+	movk x10, 0x3D8C, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 170				
+	add x18, x16, 260 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xE207, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150				
+	add x18, x16, 290 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140				
+	add x18, x16, 300 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 310 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				
+	add x18, x16, 320 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 330 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100				
+	add x18, x16, 340 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 90				
+	add x18, x16, 350 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80				
+	add x18, x16, 360 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xFF, lsl 16
+	movk x10, 0xFFFF, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 180				
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 190				
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 40						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140				
+	add x18, x16, 280 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 290 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				
+	add x18, x16, 300 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 110				
+	add x18, x16, 310 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 100				
+	add x18, x16, 320 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 90				
+	add x18, x16, 330 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 80				
+	add x18, x16, 340 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150				
+	add x18, x16, 270 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 140				
+	add x18, x16, 270 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 260 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 120				
+	add x18, x16, 240 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 230 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 240 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 150				
+	add x18, x16, 250 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0xAB, lsl 16
+	movk x10, 0xC8D1, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 160				
+	add x18, x16, 250 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 130				
+	add x18, x16, 240 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x6C, lsl 16
+	movk x10, 0x7E84, lsl 00		// Color
+	mov x5, 30						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 210				
+	add x18, x16, 220 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x35, lsl 16
+	movk x10, 0x425E, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 30						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 220 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 200				
+	add x18, x16, 220 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 210				
+	add x18, x16, 210 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 20						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 230				
+	add x18, x16, 220 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 20						// Tamaño de x
+	bl Cuadrado
+
+	add x19, x17, 220				
+	add x18, x16, 240 
+	mov x15, x19					// Cordenada de y
+	mov x14, x18					// Cordenada de x
+	bl Calcular_Direccion
+	movz x10, 0x00, lsl 16
+	movk x10, 0x0000, lsl 00		// Color
+	mov x5, 10						// Tamaño de y
+	mov x4, 10						// Tamaño de x
+	bl Cuadrado
+
+ret
+
+//----- Fin Cuerpo -----//
+
+//------------------------------------------ Fin Link ------------------------------------------//
+
+
+//------------------------------------------ Cuadrado ------------------------------------------//
+
+Cuadrado:
+
+	mov x13, 640
+	sub x13, x13, x4				// x13 = 640 - x4
+	lsl x13, x13, 2					// x13 = (640 - x4) * 4
+
+	mov x2, x5 
+
+Cuadrado1:
+	mov x1, x4 
+
+Cuadrado2:
+
+	stur w10,[x0]  					// Colorear el pixel N
+	add x0, x0, 4					// Siguiente pixel
+	sub x1, x1, 1    				// Decrementar contador X
+	cbnz x1, Cuadrado2
+	add x0,x0, x13		  			// Si no terminó la fila, salto
+	sub x2, x2, 1    				// Decrementar contador Y
+	cbnz x2, Cuadrado1  			// Si no es la última fila, salto
+
+	mov x0,x20
+
+ret
+
+//------------------------------------------ Fin Cuadrado ------------------------------------------//
+
+
+//------------------------------------------ Circulo ------------------------------------------//
+
+
+	Circulo:										// x4 = Tamaño x     x5 = Tamaño y		
+
+		mov x16, xzr
+		mov x17, xzr			
+		mov x18, xzr
+		mov x21, xzr
+		mov x22, xzr					
+		mov x24, x14								// x24 = x0
+		mov x25, x15								// x25 = y0
+		mov x26, xzr				 				// x26 = x1
+		mov x27, xzr								// x27 = y1
+	
+		sub x26, x14, x9							// En x26 guardo las cordenadas de x del inicio del cuadrado  "Le resto el radio"
+		sub x27, x15, x9							// En x27 guardo las cordenadas de y del inicio del cuadrado  "Le resto el radio"
+		sub sp,sp, #8  
+		str x30,[sp,#0]
+
+		// "pinto el cuadrado dependiendo si cumple las condiciones" de aca en adelante es muy parecido a la funcion cuadrado solo que pregunto si cumple la condicion de calculo para pintar el pixel
+
+		lsl x21,x9,1								//Ysize
+
+		loop_circ1:
+
+			mov x14, x26
+			mov x15, x27
+
+			bl Calcular_Direccion
+
+			lsl x22,x9,1							//Xsize
+
+		loop_circ2:
+
+			bl Calculo								//hago los calculos necesarios con pitagora para ver si la hipotenusa geenerada por la linea entre el centro del circulo y el pixel que estoy viendo 
+			b.le Colorear							//coloreo el circulo
+			bl Calcular_Direccion					//calculo la direccion de mi x0
+
+		Siguiente:	
+
+			add x0, x0, 4  							// Siguiente pixel
+			add x26, x26, 1							// Siguiente coordenada en x
+			sub x22, x22, 1  	  					// Decrementar contador de mi diametro
+		
+			cbnz x22,loop_circ2 					// Si no terminó la fila, salto
+		
+			sub x21, x21, 1   						// Decrementar contador Y
+			add x27, x27, 1							// Siguiente pixel en Y
+			sub x26, x24, x9 						// Pongo devuelta mi coordenadad de x En 0
+			msub x0, x3, x9, x0						// Vuelvo al princio de la linea que estoy pintado x0=x0-x1*4
+			madd x0, x1, x3, x0  					// x0 = x0 + 640 * 4
+
+  			cbnz x21,loop_circ1  					// Si no es la última fila, saltostur w11,[x20]
+
+			ldr x30,[sp,#0]  						// Cargo x15 y x14 a sus valores originales y decremento la pila en 2  
+			add sp,sp, #8
+
+			mov x0,x20
+
+		ret
+
+		Colorear:
+
+			stur w10,[x0]  							// Colorear el pixel N
+			b Siguiente								// Sigo viendo mis demas pixeles
+
+		Calculo:		
+			
+			mov x16,x26								// Guardo mis x1 y1
+			mov x17,x27
+				
+			sub x16, x16, x24						// x25 = x1 - x0
+			mul x16, x16, x16						// x25 = x25 al cuadrado
+			sub x17, x17, x25						// x26 = y1 - y0
+			mul x17, x17, x17						// x26 = x26 al cuadrado
+
+			add x16, x17, x16						// x25 = x26 + x25
+			mov x17, x9								// x26 ahora es el radio
+
+			mul x17, x17, x17						// x26 es radio cuadrado
+			cmp x16, x17							// x25 = x25 - diametro
+
+			b.gt Siguiente							// Si mi radio cuadrado en mayor extricto que mi x25 NO pinto ese pixel
+			b Colorear								// Si es menor lo pinto
+		
+//------------------------------------------ Circulo ------------------------------------------//
+
+
+//------------------------------------------ Fondo Dia ------------------------------------------//
+
+
+Fondo_Dia:
+
+	movz x10, 0x18, lsl 16
+	movk x10, 0x0E0B, lsl 00
+	mov x0, x20
+	add x8, x6, 480
+	bl Fondo
+	
+	movz x10, 0x30, lsl 16
+	movk x10, 0x1C16, lsl 00
+	mov x0, x20
+	add x8, x6, 470
+	bl Fondo
+
+	movz x10, 0x56, lsl 16			
+	movk x10, 0x3227, lsl 00
+	mov x0, x20
+	add x8, x6, 465
+	bl Fondo
+
+	movz x10, 0x00, lsl 16					// Verde		
+	movk x10, 0x2106, lsl 00
+	mov x0, x20
+	add x8, x6, 450
+	bl Fondo
+
+	movz x10, 0x00, lsl 16
+	movk x10, 0x9319, lsl 00
+	mov x0, x20
+	add x8, x6, 440
+	bl Fondo
+
+	movz x10, 0xC0, lsl 16					// Cielo
+	movk x10, 0xEEFE, lsl 00
+	mov x0, x20
+	add x8, x6, 350
+	bl Fondo
+
+	movz x10, 0x93, lsl 16
+	movk x10, 0xE3FF, lsl 00
+	mov x0, x20
+	add x8, x6, 290
+	bl Fondo
+
+	movz x10, 0x74, lsl 16
+	movk x10, 0xD1FF, lsl 00
+	mov x0, x20
+	add x8, x6, 200
+	bl Fondo
+
+	mov x9, 50								// Sol
+	mov x15, 60								//centro
+	mov x14, 80		
+	movz x10, 0xFF, lsl 16	    
+    movk x10, 0xD100, lsl 00 
+	bl Calcular_Direccion
+	bl Circulo
+
+	mov x0, x20
+
+	mov x9, 40								// Sol
+	mov x15, 61								//centro
+	mov x14, 80		
+	movz x10, 0xFF, lsl 16	    
+    movk x10, 0xF300, lsl 00 
+	bl Calcular_Direccion
+	bl Circulo
+
+
+	mov x0, x20
+
+	mov x9, 40								// Nube
+	mov x15, 61								//centro
+	mov x14, 180		
+	movz x10, 0x01FF, lsl 16	    
+    movk x10, 0xFFFF, lsl 00 
+	bl Calcular_Direccion
+	bl Circulo
+
+ret
+
+//------------------------------------------ Fin Fondo Dia ------------------------------------------//
