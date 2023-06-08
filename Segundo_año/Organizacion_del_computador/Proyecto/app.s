@@ -9,6 +9,12 @@
 	.equ GPIO_GPFSEL0, 0x00
 	.equ GPIO_GPLEV0,  0x34
 
+
+	.equ key_w, 0x2
+	.equ key_a, 0x4
+	.equ key_s, 0x8
+	.equ key_d, 0x10
+
 	.globl main
 //------------------------------------------ Main ------------------------------------------//
 
@@ -40,20 +46,13 @@ main:
 
 //------------------------------------------ Fin Definicion de variables ------------------------------------------//
 
-	bl Fondo_Dia
-
-	
-
-	mov x16, 10					// Posicion 00 de Arbol de x
-	mov x17, 10					// Posicion 00 de Arbol de y
+	mov x16, 150					// Posicion 00 de Arbol de x
+	mov x17, 100					// Posicion 00 de Arbol de y
 	bl Arbol
 	
-	mov x16, 320					// Posicion 00 de Link de x
-	mov x17, 250				// Posicion 00 de Link de y
-	bl Link
-
 	bl Flor
 
+	bl Leer
 
 	bl InfLoop
 
@@ -808,11 +807,13 @@ main:
 
 	Arbol:
 
+		// Tronco
+
 		sub sp,sp, #8  
 		str x30,[sp,#0]
 
 		add x19, x17, 150
-		add x18, x16, 20 
+		add x18, x16, 77
 		mov x15, x19					// Cordenada de y
 		mov x14, x18					// Cordenada de x
 		bl Calcular_Direccion
@@ -822,80 +823,221 @@ main:
 		mov x4, 25						// Tamaño de x
 		bl Cuadrado
 
-		// Tercera copa
+		add x19, x17, 170
+		add x18, x16, 79
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x25, lsl 16
+		movk x10, 0x1914, lsl 00		// Color
+		mov x5, 50						// Tamaño de y
+		mov x4, 2						// Tamaño de x
+		bl Cuadrado
 
-		add x19, x17, 80				
-		add x18, x16, 30 
+		add x19, x17, 210
+		add x18, x16, 82
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x25, lsl 16
+		movk x10, 0x1914, lsl 00		// Color
+		mov x5, 30						// Tamaño de y
+		mov x4, 2						// Tamaño de x
+		bl Cuadrado
+
+		add x19, x17, 170
+		add x18, x16, 85
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x25, lsl 16
+		movk x10, 0x1914, lsl 00		// Color
+		mov x5, 30						// Tamaño de y
+		mov x4, 2						// Tamaño de x
+		bl Cuadrado
+
+		add x19, x17, 220
+		add x18, x16, 86
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x25, lsl 16
+		movk x10, 0x1914, lsl 00		// Color
+		mov x5, 30						// Tamaño de y
+		mov x4, 2						// Tamaño de x
+		bl Cuadrado
+
+		add x19, x17, 170
+		add x18, x16, 91
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x25, lsl 16
+		movk x10, 0x1914, lsl 00		// Color
+		mov x5, 80						// Tamaño de y
+		mov x4, 2						// Tamaño de x
+		bl Cuadrado
+
+		add x19, x17, 170
+		add x18, x16, 99
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x25, lsl 16
+		movk x10, 0x1914, lsl 00		// Color
+		mov x5, 40						// Tamaño de y
+		mov x4, 2						// Tamaño de x
+		bl Cuadrado
+
+		add x19, x17, 214
+		add x18, x16, 97
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x25, lsl 16
+		movk x10, 0x1914, lsl 00		// Color
+		mov x5, 30						// Tamaño de y
+		mov x4, 2						// Tamaño de x
+		bl Cuadrado
+
+		// Primera copa
+
+		add x19, x17, 190				
+		add x18, x16, xzr 
 		mov x15, x19					// Cordenada de y
 		mov x14, x18					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0x00, lsl 16
 		movk x10, 0x2606, lsl 00		// Color
-		mov x5, 120						// Tamaño de y
-		mov x4, 120						// Tamaño de x
-		bl Triangulo_C
+		mov x5, 90						// Tamaño de y
+		mov x4, 90						// Tamaño de x
+		bl Triangulo_B
 
-		add x19, x17, 80				
-		add x18, x16, 30 
+		add x19, x17, 170				
+		add x18, x16, 20 
 		mov x15, x19					// Cordenada de y
 		mov x14, x18					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0x00, lsl 16
 		movk x10, 0x5F10, lsl 00		// Color
-		mov x5, 100						// Tamaño de y
-		mov x4, 100						// Tamaño de x
+		mov x5, 70						// Tamaño de y
+		mov x4, 70						// Tamaño de x
+		bl Triangulo_B
+
+		add x19, x17, 101				
+		add x18, x16, 90 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x00, lsl 16
+		movk x10, 0x2606, lsl 00		// Color
+		mov x5, 90						// Tamaño de y
+		mov x4, 90						// Tamaño de x
 		bl Triangulo_C
+
+		add x19, x17, 101				
+		add x18, x16, 90 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x00, lsl 16
+		movk x10, 0x5F10, lsl 00		// Color
+		mov x5, 70						// Tamaño de y
+		mov x4, 70						// Tamaño de x
+		bl Triangulo_C
+
 
 		// Segunda copa
 
-		add x19, x17, 50				
-		add x18, x16, 30 
+		add x19, x17, 140				
+		add x18, x16, xzr 
 		mov x15, x19					// Cordenada de y
 		mov x14, x18					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0x00, lsl 16
 		movk x10, 0x2606, lsl 00		// Color
-		mov x5, 100						// Tamaño de y
-		mov x4, 100						// Tamaño de x
-		bl Triangulo_C
+		mov x5, 90						// Tamaño de y
+		mov x4, 90						// Tamaño de x
+		bl Triangulo_B
 
-		add x19, x17, 50				
-		add x18, x16, 30 
+		add x19, x17, 120				
+		add x18, x16, 20 
 		mov x15, x19					// Cordenada de y
 		mov x14, x18					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0x00, lsl 16
 		movk x10, 0x5F10, lsl 00		// Color
-		mov x5, 80						// Tamaño de y
-		mov x4, 80						// Tamaño de x
-		bl Triangulo_C
+		mov x5, 70						// Tamaño de y
+		mov x4, 70						// Tamaño de x
+		bl Triangulo_B
 
-		// Primera copa	
-
-		add x19, x17, xzr				
-		add x18, x16, 30 
+		add x19, x17, 51				
+		add x18, x16, 90 
 		mov x15, x19					// Cordenada de y
 		mov x14, x18					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0x00, lsl 16
 		movk x10, 0x2606, lsl 00		// Color
-		mov x5, 100						// Tamaño de y
-		mov x4, 100						// Tamaño de x
+		mov x5, 90						// Tamaño de y
+		mov x4, 90						// Tamaño de x
 		bl Triangulo_C
 
-		add x19, x17, xzr
-		add x18, x16, 30 
+		add x19, x17, 51				
+		add x18, x16, 90 
 		mov x15, x19					// Cordenada de y
 		mov x14, x18					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0x00, lsl 16
 		movk x10, 0x5F10, lsl 00		// Color
-		mov x5, 80						// Tamaño de y
-		mov x4, 80						// Tamaño de x
+		mov x5, 70						// Tamaño de y
+		mov x4, 70						// Tamaño de x
 		bl Triangulo_C
 
-		
+		// Tercera copa
 
+		add x19, x17, 90				
+		add x18, x16, xzr 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x00, lsl 16
+		movk x10, 0x2606, lsl 00		// Color
+		mov x5, 90						// Tamaño de y
+		mov x4, 90						// Tamaño de x
+		bl Triangulo_B
+
+		add x19, x17, 70				
+		add x18, x16, 20 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x00, lsl 16
+		movk x10, 0x5F10, lsl 00		// Color
+		mov x5, 70						// Tamaño de y
+		mov x4, 70						// Tamaño de x
+		bl Triangulo_B
+
+		add x19, x17, 1				
+		add x18, x16, 90 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x00, lsl 16
+		movk x10, 0x2606, lsl 00		// Color
+		mov x5, 90						// Tamaño de y
+		mov x4, 90						// Tamaño de x
+		bl Triangulo_C
+
+		add x19, x17, 1				
+		add x18, x16, 90 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x00, lsl 16
+		movk x10, 0x5F10, lsl 00		// Color
+		mov x5, 70						// Tamaño de y
+		mov x4, 70						// Tamaño de x
+		bl Triangulo_C
 
 
 		ldr x30,[sp,#0]  				  
@@ -933,6 +1075,7 @@ main:
 		add sp,sp, #8
 
 	ret
+
 //------------------------------------------ Fin Sol ------------------------------------------//
 
 
@@ -3330,7 +3473,7 @@ main:
 
 	ret
 
-//----- Fin Cuerpo -----//
+
 
 //------------------------------------------ Fin Link ------------------------------------------//
 
@@ -3617,23 +3760,37 @@ main:
 //------------------------------------------ Input ------------------------------------------//
 
 
-leer:
-	mov x9, GPIO_BASE					//Seteo x9 en la direccion base de gpio
-	
-	// Setea gpios 0 - 9 como lectura
-	str wzr, [x9, GPIO_GPFSEL0]
+	Leer:
+		mov x9, GPIO_BASE					//Seteo x9 en la direccion base de gpio
+		
+		// Setea gpios 0 - 9 como lectura
+		str wzr, [x9, GPIO_GPFSEL0]
 
-	// Lee el estado de los GPIO 0 - 31
-	ldr w10, [x9, GPIO_GPLEV0]
-	
-	and w11, w10, key_w					//Mascara de w
+		// Lee el estado de los GPIO 0 - 31
+		ldr w10, [x9, GPIO_GPLEV0]
+		
+		and w11, w10, key_w					//Mascara de w
 
-	cmp w11, key_w
-	beq ejec_w
-b leer
+		cmp w11, key_w
+		beq ejec_w
+	b Leer
 
 
 //------------------------------------------ Fin Input ------------------------------------------//
+
+
+//------------------------------------------ Ejecucion W ------------------------------------------//
+
+
+	ejec_w:
+		
+		bl Fondo_Dia
+
+		
+
+	b Leer
+
+//------------------------------------------ Fin Ejecucion W ------------------------------------------//
 
 
 //------------------------------------------ Calcular_Direccion ------------------------------------------//
