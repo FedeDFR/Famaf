@@ -46,7 +46,11 @@ main:
 
 //------------------------------------------ Fin Definicion de variables ------------------------------------------//
 
-	bl Fondo_Paralelo
+	bl Fondo_Dia
+
+	bl Leer
+
+	bl Fondo_Dia
 
 	bl InfLoop
 
@@ -744,6 +748,9 @@ main:
 
 	Fondo_Paralelo:
 
+		sub sp,sp, #8  
+		str x30,[sp,#0]
+
 		mov x15, 0						// Cordenada de y
 		mov x14, 0						// Cordenada de x
 		bl Calcular_Direccion
@@ -755,15 +762,15 @@ main:
 
 		mov x8, 110						//radio
 		mov x15, HALF_HEIGH				// Cordenada de y
-		mov x14, 140						// Cordenada de x
+		mov x14, 140					// Cordenada de x
 		movz x10, 0xC0, lsl 16	    
 		movk x10, 0xEAFF, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
 
 		mov x8, 20						//radio
-		mov x15, 40			// Cordenada de y
-		mov x14, 140						// Cordenada de x
+		mov x15, 40						// Cordenada de y
+		mov x14, 140					// Cordenada de x
 		movz x10, 0xC0, lsl 16	    
 		movk x10, 0xEAFF, lsl 00 
 		bl Calcular_Direccion
@@ -792,6 +799,97 @@ main:
 		movk x10, 0xEAFF, lsl 00 
 		bl Calcular_Direccion
 		bl circulo
+
+		mov x8, 20						//radio
+		mov x15, 400					// Cordenada de y
+		mov x14, 40						// Cordenada de x
+		movz x10, 0xC0, lsl 16	    
+		movk x10, 0xEAFF, lsl 00 
+		bl Calcular_Direccion
+		bl circulo
+
+		mov x8, 10						//radio
+		mov x15, 450					// Cordenada de y
+		mov x14, 260					// Cordenada de x
+		movz x10, 0xC0, lsl 16	    
+		movk x10, 0xEAFF, lsl 00 
+		bl Calcular_Direccion
+		bl circulo
+
+		// Trifuerza
+
+		add x19, x17, 270				
+		add x18, x16, 60 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0xFF, lsl 16
+		movk x10, 0xC107, lsl 00		// Color
+		mov x5, 40						// Tamaño de y
+		mov x4, 40						// Tamaño de x
+		bl Triangulo_B
+
+		add x19, x17, 231				
+		add x18, x16, 100 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0xFF, lsl 16
+		movk x10, 0xC107, lsl 00		// Color
+		mov x5, 40						// Tamaño de y
+		mov x4, 40						// Tamaño de x
+		bl Triangulo_C
+
+		add x19, x17, 270				
+		add x18, x16, 140 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0xFF, lsl 16
+		movk x10, 0xC107, lsl 00		// Color
+		mov x5, 40						// Tamaño de y
+		mov x4, 40						// Tamaño de x
+		bl Triangulo_B
+
+		add x19, x17, 231				
+		add x18, x16, 180 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0xFF, lsl 16
+		movk x10, 0xC107, lsl 00		// Color
+		mov x5, 40						// Tamaño de y
+		mov x4, 40						// Tamaño de x
+		bl Triangulo_C
+
+		add x19, x17, 230				
+		add x18, x16, 100 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0xFF, lsl 16
+		movk x10, 0xC107, lsl 00		// Color
+		mov x5, 40						// Tamaño de y
+		mov x4, 40						// Tamaño de x
+		bl Triangulo_B
+
+		add x19, x17, 191				
+		add x18, x16, 140 
+		mov x15, x19					// Cordenada de y
+		mov x14, x18					// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0xFF, lsl 16
+		movk x10, 0xC107, lsl 00		// Color
+		mov x5, 40						// Tamaño de y
+		mov x4, 40						// Tamaño de x
+		bl Triangulo_C
+
+		mov x16, 250					// Posicion 00 de Link de x
+		mov x17, 110					// Posicion 00 de Link de y
+		bl Link
+
+		ldr x30,[sp,#0]  				  
+		add sp,sp, #8
 
 	ret
 
@@ -3877,7 +3975,7 @@ main:
 
 		cmp w11, key_w
 		beq ejec_w
-	b Leer
+	ret
 
 
 //------------------------------------------ Fin Input ------------------------------------------//
@@ -3888,9 +3986,11 @@ main:
 
 	ejec_w:
 		
-		bl Fondo_Dia
+		bl Fondo_Paralelo
 
-		
+		loop:
+			sub x7, x7, 1
+			cbnz x7, loop
 
 	b Leer
 
