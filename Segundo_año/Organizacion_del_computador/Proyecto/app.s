@@ -15,6 +15,8 @@
 	.equ key_s, 0x8
 	.equ key_d, 0x10
 
+	delay_time: .dword 0x8ffff2
+
 	.globl main
 
 
@@ -38,8 +40,6 @@ main:
 	mov x10, xzr					// Color
 	mov x9, GPIO_BASE				// GPIO
 	mov x8, xzr						// Radio
-	movz x7, 0xFFFF, lsl 00 		// Tiempo
-	movk x7, 0xFFF, lsl 16
 	mov x6, xzr						// el cero
 	mov x5, xzr 					// Tamaño y
 	mov x4, xzr 					// Tamaño x
@@ -54,8 +54,6 @@ main:
 	bl Fondo_Dia
 
 	bl Leer
-
-	bl Fondo_Dia
 
 	bl InfLoop
 
@@ -769,6 +767,15 @@ main:
 		mov x4, SCREEN_WIDTH			// Tamaño de x
 		bl Cuadrado
 
+		mov x15, HALF_HEIGH				// Cordenada de y
+		mov x14, 0						// Cordenada de x
+		bl Calcular_Direccion
+		movz x10, 0x00, lsl 16
+		movk x10, 0x0000, lsl 00		// Color
+		mov x5, HALF_HEIGH				// Tamaño de y
+		mov x4, SCREEN_WIDTH			// Tamaño de x
+		bl Cuadrado
+
 		mov x8, 110						//radio
 		mov x15, HALF_HEIGH				// Cordenada de y
 		mov x14, 140					// Cordenada de x
@@ -904,7 +911,6 @@ main:
 
 
 //------------------------------------------ Fin Fondo Paralelo --------------------------------------------------//
-
 
 
 //------------------------------------------ Flor ----------------------------------------------------------------//
@@ -3694,7 +3700,6 @@ main:
 //------------------------------------------ Fin Link ------------------------------------------------------------//
 
 
-
 //------------------------------------------ Cuadrado ------------------------------------------------------------//
 
 
@@ -3995,7 +4000,7 @@ main:
 
 		cmp w11, key_w
 		beq ejec_w
-		
+
 	b Leer
 
 
@@ -4007,15 +4012,47 @@ main:
 
 	ejec_w:
 		
-		bl Fondo_Paralelo
+		sub sp, sp, 8
+		stur x30, [sp]
 
-		loop:
-			sub x7, x7, 1
-			cbnz x7, loop
+		cmp x26,xzr
+		beq set_1
+		b set_0
+
+	set_1:
+		
+		bl Fondo_Paralelo
+		b retorno_space
+
+	set_0:
+
+		bl Fondo_Dia			
+		b retorno_space
+
+	retorno_space:
+	bl delay
+
+	ldur x30,[sp]
+	add sp,sp,8
+	ret
 
 	b Leer
 
+
 //------------------------------------------ Fin Ejecucion W -----------------------------------------------------//
+
+
+//------------------------------------------ Delay ---------------------------------------------------------------//
+
+
+delay:
+        ldr x7, delay_time
+    delay_loop:
+        subs x7, x7, 1
+        bne delay_loop
+    ret	
+
+//------------------------------------------ Fin Delay -----------------------------------------------------------//
 
 
 //------------------------------------------ Calcular_Direccion --------------------------------------------------//
@@ -4090,9 +4127,9 @@ main:
 			bl Fondo
 
 			add x8, x7, xzr
-			Retraso:
+			tiempo:
 				sub x8, x8, 1
-				cbnz x8, Retraso
+				cbnz x8, tiempo
 
 		sub x10, x10, 0x000400
 		sub x8, x8, 1
