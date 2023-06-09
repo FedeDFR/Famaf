@@ -16451,7 +16451,7 @@ Disassembly of section .text:
 	...
    900a0:	00080000 	.inst	0x00080000 ; undefined
    900a4:	00000000 	udf	#0
-   900a8:	001135f0 	.inst	0x001135f0 ; undefined
+   900a8:	00113600 	.inst	0x00113600 ; undefined
    900ac:	00000000 	udf	#0
    900b0:	00090008 	.inst	0x00090008 ; undefined
    900b4:	00000000 	udf	#0
@@ -16469,7 +16469,7 @@ Disassembly of section .text:
    900dc:	aa1f03ee 	mov	x14, xzr
    900e0:	aa1f03ef 	mov	x15, xzr
    900e4:	aa1f03ea 	mov	x10, xzr
-   900e8:	aa1f03e9 	mov	x9, xzr
+   900e8:	d2a7e409 	mov	x9, #0x3f200000            	// #1059061760
    900ec:	aa1f03e8 	mov	x8, xzr
    900f0:	d29fffe7 	mov	x7, #0xffff                	// #65535
    900f4:	f2a1ffe7 	movk	x7, #0xfff, lsl #16
@@ -16482,7 +16482,7 @@ Disassembly of section .text:
    90110:	94000004 	bl	90120 <Fondo_Dia>
    90114:	94000d02 	bl	9351c <Leer>
    90118:	94000002 	bl	90120 <Fondo_Dia>
-   9011c:	94000d33 	bl	935e8 <InfLoop>
+   9011c:	94000d37 	bl	935f8 <InfLoop>
 
 0000000000090120 <Fondo_Dia>:
    90120:	d10023ff 	sub	sp, sp, #0x8
@@ -19872,7 +19872,7 @@ Disassembly of section .text:
    93528:	121f014b 	and	w11, w10, #0x2
    9352c:	7100097f 	cmp	w11, #0x2
    93530:	54000040 	b.eq	93538 <ejec_w>  // b.none
-   93534:	d65f03c0 	ret
+   93534:	17fffffa 	b	9351c <Leer>
 
 0000000000093538 <ejec_w>:
    93538:	97fff54b 	bl	90a64 <Fondo_Paralelo>
@@ -19935,20 +19935,24 @@ Disassembly of section .text:
    935dc:	f94003fe 	ldr	x30, [sp]
    935e0:	910023ff 	add	sp, sp, #0x8
    935e4:	d65f03c0 	ret
+   935e8:	d2a7e409 	mov	x9, #0x3f200000            	// #1059061760
+   935ec:	b900013f 	str	wzr, [x9]
+   935f0:	b940352a 	ldr	w10, [x9, #52]
+   935f4:	121f014b 	and	w11, w10, #0x2
 
-00000000000935e8 <InfLoop>:
-   935e8:	14000000 	b	935e8 <InfLoop>
+00000000000935f8 <InfLoop>:
+   935f8:	14000000 	b	935f8 <InfLoop>
 	...
 
 Disassembly of section .bss:
 
-00000000001135ec <__bss_end-0x4>:
-  1135ec:	00000000 	udf	#0
+00000000001135fc <__bss_end-0x4>:
+  1135fc:	00000000 	udf	#0
 
 Disassembly of section .debug_line:
 
 0000000000000000 <.debug_line>:
-   0:	00000d9f 	udf	#3487
+   0:	00000da7 	udf	#3495
    4:	001c0003 	.inst	0x001c0003 ; undefined
    8:	01040000 	.inst	0x01040000 ; undefined
    c:	000d0efb 	.inst	0x000d0efb ; undefined
@@ -19960,13 +19964,13 @@ Disassembly of section .debug_line:
   24:	09000000 	.inst	0x09000000 ; undefined
   28:	0900c802 	.inst	0x0900c802 ; undefined
   2c:	00000000 	udf	#0
-  30:	011a0300 	.inst	0x011a0300 ; undefined
+  30:	011e0300 	.inst	0x011e0300 ; undefined
   34:	21212121 	.inst	0x21212121 ; undefined
   38:	21212121 	.inst	0x21212121 ; undefined
   3c:	21212121 	.inst	0x21212121 ; undefined
   40:	21212121 	.inst	0x21212121 ; undefined
-  44:	22222521 	.inst	0x22222521 ; undefined
-  48:	20090322 	.inst	0x20090322 ; undefined
+  44:	22222621 	.inst	0x22222621 ; undefined
+  48:	200b0322 	.inst	0x200b0322 ; undefined
   4c:	21212221 	.inst	0x21212221 ; undefined
   50:	21212121 	.inst	0x21212121 ; undefined
   54:	21212221 	.inst	0x21212221 ; undefined
@@ -20115,7 +20119,7 @@ Disassembly of section .debug_line:
  290:	22212122 	.inst	0x22212122 ; undefined
  294:	21222121 	.inst	0x21222121 ; undefined
  298:	22212221 	.inst	0x22212221 ; undefined
- 29c:	21200903 	.inst	0x21200903 ; undefined
+ 29c:	21200b03 	.inst	0x21200b03 ; undefined
  2a0:	21212122 	.inst	0x21212122 ; undefined
  2a4:	21212121 	.inst	0x21212121 ; undefined
  2a8:	21212122 	.inst	0x21212122 ; undefined
@@ -20147,7 +20151,7 @@ Disassembly of section .debug_line:
  310:	21212121 	.inst	0x21212121 ; undefined
  314:	21212221 	.inst	0x21212221 ; undefined
  318:	03222122 	.inst	0x03222122 ; undefined
- 31c:	2221200b 	.inst	0x2221200b ; undefined
+ 31c:	2221200c 	.inst	0x2221200c ; undefined
  320:	21212121 	.inst	0x21212121 ; undefined
  324:	21212121 	.inst	0x21212121 ; undefined
  328:	21212122 	.inst	0x21212122 ; undefined
@@ -20169,7 +20173,7 @@ Disassembly of section .debug_line:
  368:	21212121 	.inst	0x21212121 ; undefined
  36c:	21212121 	.inst	0x21212121 ; undefined
  370:	03222122 	.inst	0x03222122 ; undefined
- 374:	2221200b 	.inst	0x2221200b ; undefined
+ 374:	2221200d 	.inst	0x2221200d ; undefined
  378:	21212121 	.inst	0x21212121 ; undefined
  37c:	21212121 	.inst	0x21212121 ; undefined
  380:	21212221 	.inst	0x21212221 ; undefined
@@ -20220,13 +20224,13 @@ Disassembly of section .debug_line:
  434:	21212221 	.inst	0x21212221 ; undefined
  438:	21212121 	.inst	0x21212121 ; undefined
  43c:	23212121 	.inst	0x23212121 ; undefined
- 440:	09032221 	.inst	0x09032221 ; undefined
+ 440:	0b032221 	add	w1, w17, w3, lsl #8
  444:	21222120 	.inst	0x21222120 ; undefined
  448:	21212121 	.inst	0x21212121 ; undefined
  44c:	21212221 	.inst	0x21212221 ; undefined
  450:	21212121 	.inst	0x21212121 ; undefined
  454:	03222122 	.inst	0x03222122 ; undefined
- 458:	25212009 	.inst	0x25212009 ; undefined
+ 458:	2521200b 	.inst	0x2521200b ; undefined
  45c:	21212121 	.inst	0x21212121 ; undefined
  460:	21212121 	.inst	0x21212121 ; undefined
  464:	21212221 	.inst	0x21212221 ; undefined
@@ -20765,11 +20769,11 @@ Disassembly of section .debug_line:
  cb8:	21212121 	.inst	0x21212121 ; undefined
  cbc:	21212121 	.inst	0x21212121 ; undefined
  cc0:	22212221 	.inst	0x22212221 ; undefined
- cc4:	21200c03 	.inst	0x21200c03 ; undefined
+ cc4:	21200d03 	.inst	0x21200d03 ; undefined
  cc8:	24232221 	cmplo	p1.b, p0/z, z17.b, #12
  ccc:	21212121 	.inst	0x21212121 ; undefined
  cd0:	22222121 	.inst	0x22222121 ; undefined
- cd4:	21200a03 	.inst	0x21200a03 ; undefined
+ cd4:	21200b03 	.inst	0x21200b03 ; undefined
  cd8:	21212121 	.inst	0x21212121 ; undefined
  cdc:	24212421 	cmplo	p1.b, p1/z, z1.b, #4
  ce0:	22212121 	.inst	0x22212121 ; undefined
@@ -20786,7 +20790,7 @@ Disassembly of section .debug_line:
  d0c:	21212424 	.inst	0x21212424 ; undefined
  d10:	21212221 	.inst	0x21212221 ; undefined
  d14:	22222221 	.inst	0x22222221 ; undefined
- d18:	21200a03 	.inst	0x21200a03 ; undefined
+ d18:	21200b03 	.inst	0x21200b03 ; undefined
  d1c:	21212122 	.inst	0x21212122 ; undefined
  d20:	21212424 	.inst	0x21212424 ; undefined
  d24:	21212221 	.inst	0x21212221 ; undefined
@@ -20804,44 +20808,46 @@ Disassembly of section .debug_line:
  d54:	21232124 	.inst	0x21232124 ; undefined
  d58:	21222121 	.inst	0x21222121 ; undefined
  d5c:	21222122 	.inst	0x21222122 ; undefined
- d60:	23200a03 	.inst	0x23200a03 ; undefined
+ d60:	23200b03 	.inst	0x23200b03 ; undefined
  d64:	21222223 	.inst	0x21222223 ; undefined
- d68:	200b0321 	.inst	0x200b0321 ; undefined
+ d68:	200b0322 	.inst	0x200b0322 ; undefined
  d6c:	03222123 	.inst	0x03222123 ; undefined
- d70:	21212009 	.inst	0x21212009 ; undefined
+ d70:	2121200a 	.inst	0x2121200a ; undefined
  d74:	22212122 	.inst	0x22212122 ; undefined
  d78:	21222121 	.inst	0x21222121 ; undefined
- d7c:	09032121 	.inst	0x09032121 ; undefined
+ d7c:	0b032121 	add	w1, w9, w3, lsl #8
  d80:	24222120 	cmplo	p0.b, p0/z, z9.b, #8
  d84:	21212124 	.inst	0x21212124 ; undefined
  d88:	03222121 	.inst	0x03222121 ; undefined
- d8c:	22212009 	.inst	0x22212009 ; undefined
+ d8c:	2221200b 	.inst	0x2221200b ; undefined
  d90:	21232121 	.inst	0x21232121 ; undefined
  d94:	22212222 	.inst	0x22212222 ; undefined
  d98:	21222121 	.inst	0x21222121 ; undefined
- d9c:	01022621 	.inst	0x01022621 ; undefined
- da0:	4f010100 	.inst	0x4f010100 ; undefined
- da4:	03000000 	.inst	0x03000000 ; undefined
- da8:	00001e00 	udf	#7680
- dac:	fb010400 	.inst	0xfb010400 ; undefined
- db0:	01000d0e 	.inst	0x01000d0e ; undefined
- db4:	00010101 	.inst	0x00010101 ; undefined
- db8:	00010000 	.inst	0x00010000 ; undefined
- dbc:	73000100 	.inst	0x73000100 ; undefined
- dc0:	74726174 	.inst	0x74726174 ; undefined
- dc4:	0000732e 	udf	#29486
- dc8:	00000000 	udf	#0
- dcc:	00000209 	udf	#521
- dd0:	00000008 	udf	#8
- dd4:	30030000 	adr	x0, 6dd5 <MMIO_BASE_ALTA+0x2eb5>
- dd8:	23212101 	.inst	0x23212101 ; undefined
- ddc:	21232124 	.inst	0x21232124 ; undefined
- de0:	21212122 	.inst	0x21212122 ; undefined
- de4:	21212124 	.inst	0x21212124 ; undefined
- de8:	21212121 	.inst	0x21212121 ; undefined
- dec:	02212121 	.inst	0x02212121 ; undefined
- df0:	0001809c 	.inst	0x0001809c ; undefined
- df4:	Address 0x0000000000000df4 is out of bounds.
+ d9c:	200a0321 	.inst	0x200a0321 ; undefined
+ da0:	03272326 	.inst	0x03272326 ; undefined
+ da4:	0102200b 	.inst	0x0102200b ; undefined
+ da8:	4f010100 	.inst	0x4f010100 ; undefined
+ dac:	03000000 	.inst	0x03000000 ; undefined
+ db0:	00001e00 	udf	#7680
+ db4:	fb010400 	.inst	0xfb010400 ; undefined
+ db8:	01000d0e 	.inst	0x01000d0e ; undefined
+ dbc:	00010101 	.inst	0x00010101 ; undefined
+ dc0:	00010000 	.inst	0x00010000 ; undefined
+ dc4:	73000100 	.inst	0x73000100 ; undefined
+ dc8:	74726174 	.inst	0x74726174 ; undefined
+ dcc:	0000732e 	udf	#29486
+ dd0:	00000000 	udf	#0
+ dd4:	00000209 	udf	#521
+ dd8:	00000008 	udf	#8
+ ddc:	30030000 	adr	x0, 6ddd <MMIO_BASE_ALTA+0x2ebd>
+ de0:	23212101 	.inst	0x23212101 ; undefined
+ de4:	21232124 	.inst	0x21232124 ; undefined
+ de8:	21212122 	.inst	0x21212122 ; undefined
+ dec:	21212124 	.inst	0x21212124 ; undefined
+ df0:	21212121 	.inst	0x21212121 ; undefined
+ df4:	02212121 	.inst	0x02212121 ; undefined
+ df8:	0001809c 	.inst	0x0001809c ; undefined
+ dfc:	Address 0x0000000000000dfc is out of bounds.
 
 
 Disassembly of section .debug_info:
@@ -20853,14 +20859,14 @@ Disassembly of section .debug_info:
    c:	00000000 	udf	#0
   10:	000900c8 	.inst	0x000900c8 ; undefined
   14:	00000000 	udf	#0
-  18:	000935ec 	.inst	0x000935ec ; undefined
+  18:	000935fc 	.inst	0x000935fc ; undefined
 	...
   24:	00000006 	udf	#6
   28:	00000021 	udf	#33
   2c:	002a8001 	.inst	0x002a8001 ; NYI
   30:	00020000 	.inst	0x00020000 ; undefined
   34:	00000014 	udf	#20
-  38:	0da30108 	st2	{v8.b, v9.b}[0], [x8], x3
+  38:	0dab0108 	st2	{v8.b, v9.b}[0], [x8], x11
   3c:	00000000 	udf	#0
   40:	00000008 	udf	#8
   44:	00c80000 	.inst	0x00c80000 ; undefined
@@ -20893,7 +20899,7 @@ Disassembly of section .debug_aranges:
    c:	00000000 	udf	#0
   10:	000900c8 	.inst	0x000900c8 ; undefined
   14:	00000000 	udf	#0
-  18:	00003524 	udf	#13604
+  18:	00003534 	udf	#13620
 	...
   30:	0000002c 	udf	#44
   34:	002e0002 	.inst	0x002e0002 ; NYI
