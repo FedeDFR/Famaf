@@ -7,67 +7,87 @@ Name             Origin             Length             Attributes
 Linker script and memory map
 
 LOAD app.o
+LOAD dibujos.o
+LOAD funciones.o
 LOAD start.o
                 0x0000000000080000                . = 0x80000
 
-.text           0x0000000000080000    0x93638
+.text           0x0000000000080000    0x99f70
  *(.text.boot)
  .text.boot     0x0000000000080000    0x100c8 start.o
                 0x0000000000080000                _start
  *(.text*)
- .text          0x00000000000900c8     0x3570 app.o
-                0x00000000000900d0                main
- .text          0x0000000000093638    0x80000 start.o
+ .text          0x00000000000900c8     0x3520 app.o
+                0x000000000009358c                main
+ .text          0x00000000000935e8     0x34c4 dibujos.o
+ .text          0x0000000000096aac     0x34c4 funciones.o
+ .text          0x0000000000099f70    0x80000 start.o
 
-.iplt           0x0000000000113638        0x0
- .iplt          0x0000000000113638        0x0 start.o
+.iplt           0x0000000000119f70        0x0
+ .iplt          0x0000000000119f70        0x0 start.o
 
-.rela.dyn       0x0000000000113638        0x0
- .rela.iplt     0x0000000000113638        0x0 start.o
+.rela.dyn       0x0000000000119f70        0x0
+ .rela.iplt     0x0000000000119f70        0x0 start.o
  .rela.text.boot
-                0x0000000000113638        0x0 start.o
+                0x0000000000119f70        0x0 start.o
 
-.data           0x0000000000113638        0x0
- .data          0x0000000000113638        0x0 app.o
- .data          0x0000000000113638        0x0 start.o
+.data           0x0000000000119f70        0x0
+ .data          0x0000000000119f70        0x0 app.o
+ .data          0x0000000000119f70        0x0 dibujos.o
+ .data          0x0000000000119f70        0x0 funciones.o
+ .data          0x0000000000119f70        0x0 start.o
 
-.igot.plt       0x0000000000113638        0x0
- .igot.plt      0x0000000000113638        0x0 start.o
+.igot.plt       0x0000000000119f70        0x0
+ .igot.plt      0x0000000000119f70        0x0 start.o
 
-.bss            0x0000000000113638        0x8
+.bss            0x0000000000119f70        0x0
  *(.bss*)
- .bss           0x0000000000113638        0x0 app.o
- .bss           0x0000000000113638        0x0 start.o
-                0x0000000000113640                . = ALIGN (0x10)
- *fill*         0x0000000000113638        0x8 
-                0x0000000000113640                __bss_start = .
+ .bss           0x0000000000119f70        0x0 app.o
+ .bss           0x0000000000119f70        0x0 dibujos.o
+ .bss           0x0000000000119f70        0x0 funciones.o
+ .bss           0x0000000000119f70        0x0 start.o
+                0x0000000000119f70                . = ALIGN (0x10)
+                0x0000000000119f70                __bss_start = .
  *(.bss .bss.*)
  *(COMMON)
-                0x0000000000113640                __bss_end = .
-                0x0000000000113640                _end = .
+                0x0000000000119f70                __bss_end = .
+                0x0000000000119f70                _end = .
                 0x0000000000000000                __bss_size = ((__bss_end - __bss_start) >> 0x3)
 OUTPUT(kernel8.elf elf64-littleaarch64)
 LOAD linker stubs
 
-.debug_line     0x0000000000000000      0xe0d
- .debug_line    0x0000000000000000      0xdba app.o
- .debug_line    0x0000000000000dba       0x53 start.o
+.debug_line     0x0000000000000000     0x2955
+ .debug_line    0x0000000000000000      0xdc4 app.o
+ .debug_line    0x0000000000000dc4      0xd9f dibujos.o
+ .debug_line    0x0000000000001b63      0xd9f funciones.o
+ .debug_line    0x0000000000002902       0x53 start.o
 
-.debug_info     0x0000000000000000       0x5c
+.debug_info     0x0000000000000000       0xb8
  .debug_info    0x0000000000000000       0x2e app.o
- .debug_info    0x000000000000002e       0x2e start.o
+ .debug_info    0x000000000000002e       0x2e dibujos.o
+ .debug_info    0x000000000000005c       0x2e funciones.o
+ .debug_info    0x000000000000008a       0x2e start.o
 
-.debug_abbrev   0x0000000000000000       0x28
+.debug_abbrev   0x0000000000000000       0x50
  .debug_abbrev  0x0000000000000000       0x14 app.o
- .debug_abbrev  0x0000000000000014       0x14 start.o
+ .debug_abbrev  0x0000000000000014       0x14 dibujos.o
+ .debug_abbrev  0x0000000000000028       0x14 funciones.o
+ .debug_abbrev  0x000000000000003c       0x14 start.o
 
-.debug_aranges  0x0000000000000000       0x60
+.debug_aranges  0x0000000000000000       0xc0
  .debug_aranges
                 0x0000000000000000       0x30 app.o
  .debug_aranges
-                0x0000000000000030       0x30 start.o
+                0x0000000000000030       0x30 dibujos.o
+ .debug_aranges
+                0x0000000000000060       0x30 funciones.o
+ .debug_aranges
+                0x0000000000000090       0x30 start.o
 
-.debug_str      0x0000000000000000       0x37
- .debug_str     0x0000000000000000       0x2f app.o
- .debug_str     0x000000000000002f        0x8 start.o
+.debug_str      0x0000000000000000       0x47
+ .debug_str     0x0000000000000000       0x33 app.o
+ .debug_str     0x0000000000000033        0xc dibujos.o
+                                         0x35 (size before relaxing)
+ .debug_str     0x000000000000003f       0x33 funciones.o
+ .debug_str     0x000000000000003f        0x8 start.o
                                          0x31 (size before relaxing)
