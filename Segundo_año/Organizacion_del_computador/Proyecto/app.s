@@ -40,6 +40,8 @@ main:
 	mov x10, xzr					// Color
 	mov x9, GPIO_BASE				// GPIO
 	mov x8, xzr						// Radio
+	movz x7, 0xFF, lsl 16
+	movk x7, 0xFFF, lsl 00			// Delay
 	mov x6, xzr						// el cero
 	mov x5, xzr 					// Tamaño y
 	mov x4, xzr 					// Tamaño x
@@ -51,7 +53,7 @@ main:
 //------------------------------------------ Fin Definicion de variables -----------------------------------------//
 
 
-	bl Fondo_Dia
+	bl Fondo_Paralelo
 
 	bl Leer
 
@@ -834,10 +836,9 @@ main:
 
 		// Trifuerza
 
-		add x19, x17, 270				
-		add x18, x16, 60 
-		mov x15, x19					// Cordenada de y
-		mov x14, x18					// Cordenada de x
+		
+		mov x15, 270					// Cordenada de y
+		mov x14, 60						// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0xFF, lsl 16
 		movk x10, 0xC107, lsl 00		// Color
@@ -845,10 +846,8 @@ main:
 		mov x4, 40						// Tamaño de x
 		bl Triangulo_B
 
-		add x19, x17, 231				
-		add x18, x16, 100 
-		mov x15, x19					// Cordenada de y
-		mov x14, x18					// Cordenada de x
+		mov x15, 231					// Cordenada de y
+		mov x14, 100					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0xFF, lsl 16
 		movk x10, 0xC107, lsl 00		// Color
@@ -856,10 +855,8 @@ main:
 		mov x4, 40						// Tamaño de x
 		bl Triangulo_C
 
-		add x19, x17, 270				
-		add x18, x16, 140 
-		mov x15, x19					// Cordenada de y
-		mov x14, x18					// Cordenada de x
+		mov x15, 270					// Cordenada de y
+		mov x14, 140					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0xFF, lsl 16
 		movk x10, 0xC107, lsl 00		// Color
@@ -869,8 +866,8 @@ main:
 
 		add x19, x17, 231				
 		add x18, x16, 180 
-		mov x15, x19					// Cordenada de y
-		mov x14, x18					// Cordenada de x
+		mov x15, 231					// Cordenada de y
+		mov x14, 180					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0xFF, lsl 16
 		movk x10, 0xC107, lsl 00		// Color
@@ -878,10 +875,8 @@ main:
 		mov x4, 40						// Tamaño de x
 		bl Triangulo_C
 
-		add x19, x17, 230				
-		add x18, x16, 100 
-		mov x15, x19					// Cordenada de y
-		mov x14, x18					// Cordenada de x
+		mov x15, 230					// Cordenada de y
+		mov x14, 100					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0xFF, lsl 16
 		movk x10, 0xC107, lsl 00		// Color
@@ -889,10 +884,8 @@ main:
 		mov x4, 40						// Tamaño de x
 		bl Triangulo_B
 
-		add x19, x17, 191				
-		add x18, x16, 140 
-		mov x15, x19					// Cordenada de y
-		mov x14, x18					// Cordenada de x
+		mov x15, 191					// Cordenada de y
+		mov x14, 140					// Cordenada de x
 		bl Calcular_Direccion
 		movz x10, 0xFF, lsl 16
 		movk x10, 0xC107, lsl 00		// Color
@@ -3753,13 +3746,13 @@ main:
 	loop_tria_2:
 
 		stur w10,[x0] 					// Colorear el pixel N
-		add x0, x0 ,4   					// Siguiente pixel
+		add x0, x0 ,4   				// Siguiente pixel
 		sub x24, x24, 1    				// Decrementar contador X
 		cbnz x24, loop_tria_2  			// Si no terminó la fila, salto
 			
 		sub x25, x25, 1    				// Decrementar contador Y
 		msub x0, x3, x4, x0				//vuelvo al princio de la linea que estoy pintado x0=x0-x1*4
-		madd x0, x1, x3, x0  				//x0=x0+640*4
+		madd x0, x1, x3, x0  			//x0=x0+640*4
 		add x12, x12, 1
 		mul x11, x12, x3
 		add x0, x0, x11
@@ -4015,18 +4008,19 @@ main:
 		sub sp, sp, 8
 		stur x30, [sp]
 
-		cmp x26,xzr
+		cmp x29,xzr
 		beq set_1
 		b set_0
 
 	set_1:
-		
 		bl Fondo_Paralelo
+		add x29, x29, 1
+		cmp x29, xzr
 		b retorno_space
 
 	set_0:
-
-		bl Fondo_Dia			
+		bl Fondo_Dia
+		mov x29, xzr			
 		b retorno_space
 
 	retorno_space:
@@ -4034,7 +4028,6 @@ main:
 
 	ldur x30,[sp]
 	add sp,sp,8
-	ret
 
 	b Leer
 
@@ -4045,12 +4038,13 @@ main:
 //------------------------------------------ Delay ---------------------------------------------------------------//
 
 
-delay:
-        ldr x7, delay_time
-    delay_loop:
-        subs x7, x7, 1
-        bne delay_loop
-    ret	
+	delay:
+			ldr x7, delay_time
+		delay_loop:
+			subs x7, x7, 1
+			bne delay_loop
+		ret	
+
 
 //------------------------------------------ Fin Delay -----------------------------------------------------------//
 
@@ -4074,7 +4068,8 @@ delay:
 
 		ldr x4,[sp,#8]  				//cargo x15 y x14 a sus valores originales y decremento la pila en 2 
 		ldr x3, [sp,#0] 
-		add sp,sp, #16  
+		add sp,sp, #16 
+
 	ret
 
 
