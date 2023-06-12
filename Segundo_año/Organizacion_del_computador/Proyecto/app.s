@@ -15,8 +15,6 @@
 	.equ key_s, 0x8
 	.equ key_d, 0x10
 
-	delay_time: .dword 0x8ffff2
-
 	.globl main
 
 
@@ -30,6 +28,7 @@ main:
 
 
 									// x0 contiene la Calcular_Direccion base del framebuffer
+	mov x29, xzr					// Comparador de set
 	mov x20, x0 					// Guarda la dirección base del framebuffer en x20
 	mov x19, xzr					// Posicion 00 de Sol de y
 	mov x18, xzr					// Posicion 00 de Sol de x
@@ -4015,7 +4014,6 @@ main:
 	set_1:
 		bl Fondo_Paralelo
 		add x29, x29, 1
-		cmp x29, xzr
 		b retorno_space
 
 	set_0:
@@ -4024,6 +4022,7 @@ main:
 		b retorno_space
 
 	retorno_space:
+	bl delay
 	bl delay
 
 	ldur x30,[sp]
@@ -4039,7 +4038,9 @@ main:
 
 
 	delay:
-			ldr x7, delay_time
+
+		movz x7, 0xFF, lsl 16
+		movk x7, 0xFFF, lsl 00			// Delay
 		delay_loop:
 			subs x7, x7, 1
 			bne delay_loop
