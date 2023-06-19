@@ -4,6 +4,7 @@
 #include "string.h"
 
 struct _s_string {
+
     char *content;
     unsigned int length;
 };
@@ -11,9 +12,10 @@ struct _s_string {
 string string_create(const char *word) {
     string str = NULL;
     str = calloc(1, sizeof(struct _s_string));
-    str->length = /* needs implementation */;
-    str->content = calloc(/* needs implementation */, sizeof(char));
+    str->length = strlen(word);
+    str->content = calloc(str->length + 1, sizeof(char));
     str->content = strncpy(str->content, word, str->length + 1);
+
     return (str);
 }
 
@@ -22,12 +24,18 @@ unsigned int string_length(string str) {
 }
 
 bool string_less(const string str1, const string str2) {
-    /* needs implementation */
-    return false;
+
+    int cmp = strcmp(str1->content,str2->content);
+    // It compares the two strings character by character till there is a mismatch. 
+    // If the two strings are identical, it returns a 0. 
+    // If not, then it returns the difference between the ASCII values of the first non-matching pair of characters.
+
+    return (cmp <= 0);
 }
 
 bool string_eq(const string str1, const string str2) {
     int cmp = strcmp(str1->content, str2->content);
+
     return (cmp == 0);
 }
 
@@ -39,6 +47,7 @@ string string_destroy(string str) {
     free(str->content);
     free(str);
     str = NULL;
+
     return (str);
 }
 

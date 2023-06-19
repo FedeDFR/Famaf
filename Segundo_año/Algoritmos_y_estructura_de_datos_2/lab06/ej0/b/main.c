@@ -64,6 +64,7 @@ int main(int argc, char *argv[]) {
     queue_dump(q, stdout);
 
     q = queue_destroy (q);
+    
     return EXIT_SUCCESS;
 }
 

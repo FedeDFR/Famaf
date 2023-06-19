@@ -60,6 +60,7 @@ abb abb_from_file(const char *filepath) {
 }
 
 int main(int argc, char *argv[]) {
+
     char *filepath = NULL;
 
     /* parse the filepath given in command line arguments */
@@ -68,18 +69,6 @@ int main(int argc, char *argv[]) {
     /* parse the file to obtain an abb with the elements */
     abb tree = abb_from_file(filepath);
 
-    /*dumping the tree*/
-    abb_dump(tree);
-    if (!abb_is_empty(tree)) {
-        printf("\n");
-        printf("raiz: %d\n minimo: %d\n maximo: %d\n", abb_root(tree),
-                                                       abb_min(tree),
-                                                       abb_max(tree));
-    } else {
-        printf("\nÁrbol vacío\n");
-    }
-
-    tree = abb_destroy(tree);
     /*
      * Modificar e implementar con un ciclo una interfaz que permita al usuario
      * realizar una de las siguientes operaciones en cada iteración:
@@ -99,6 +88,84 @@ int main(int argc, char *argv[]) {
      *
      * Al salir debe liberarse toda la memoria utilizada.
      *
-     */
+    */
+
+    unsigned int option = 0u;
+    int input;
+
+    while (option != 7) {
+
+        printf("\n Choose what you want to do. Options are:\n"
+           "\n"
+           "\t---------------------------------------------------------------\n"
+           "\t* 1: Mostrar árbol por pantalla                               |\n"
+           "\t* 2: Agregar un elemento                                      |\n"
+           "\t* 3: Eliminar un elemento                                     |\n"
+           "\t* 4: Chequear existencia de elemento                          |\n"
+           "\t* 5: Mostrar longitud del árbol                               |\n"
+           "\t* 6: Mostrar raiz, máximo y mínimo del árbol                  |\n"
+           "\t* 7: Salir                                                    |\n"
+           "\t---------------------------------------------------------------\n"
+           "\n Please enter your choice: ");
+
+        scanf(" %u", &option);
+        if (option != 1 && option != 2 && option != 3 && option != 4 &&
+            option != 5 && option != 6 && option != 7) {
+
+            printf("Ingresar una opción q sea válida \n\n");
+        }
+
+        switch(option) {
+            case 1:
+                abb_dump(tree);
+                break;
+
+            case 2:
+                printf("Ingresar elemento que desea agregar: ");
+                scanf("%d", &input);
+                abb_add(tree, input);
+                break;
+
+            case 3:
+                printf("Ingresar elemento que desea eliminar: ");
+                scanf("%d", &input);
+                abb_remove(tree, input);
+                break;
+
+            case 4:
+                printf("Ingresar elemento que desea verificar que existe: ");
+                scanf("%d", &input);
+                printf("%s", abb_exists(tree, input) ? "Si existe el elemento \n" : "No existe el elemento \n");
+                break;
+
+            case 5:
+                printf("La longitud del árbol es: %u \n", abb_length(tree));
+                break;
+
+            case 6:
+                if (!abb_is_empty(tree)) {
+
+                    printf("\n");
+                    printf("raiz: %d\n minimo: %d\n maximo: %d\n", abb_root(tree), abb_min(tree), abb_max(tree));
+
+                } else {
+
+                    printf("\nÁrbol vacío\n");
+                }
+
+                break;
+
+            default:
+                break;
+        }
+    };
+
+    tree = abb_destroy(tree);
+
     return (EXIT_SUCCESS);
 }
+
+/*
+    El abb_dump() original muestra los elementos en orden porque va hasta el elemento mas a la izq (por ende el mas chico) y printea de izq a der.
+    El arbol que se formaria en caso de agregar todos los elementos en ese orden seria un arbol solo con ramas derechas.
+*/
