@@ -54,6 +54,28 @@ ordenos los jugadores de menor puesto a mayor en el ranking
 primero calculo dif_goles y los printeo. Despues comparo la novena columna y despues la decima y ordeno la lista y por ultimo vuelvo a imprimir la lista con todos los datos y la diferencia de goles
 */
 
+7)	ip link | grep -i -o 'ether [0-9a-f:]*'
+
+/*
+'ether [0-9a-f:]*' busca líneas que contienen la palabra "ether" seguida de una dirección MAC válida en formato hexadecimal. El flag -o en grep hace que se muestren solo las coincidencias encontradas en lugar de la línea completa, por lo que mostrará solo las direcciones MAC. Además el flag -i hace que la búsqueda no le importe entre mayúsculas y minúsculas.
+*/
+
+	ip link show | awk '/ether/ {print $2}'
+
+/*
+otra forma es con awk accediendo a ether printea la segunda columna
+*/
+
+8)	for i in {01..10}; do
+	   mv "fma_S01E${i}_es.srt" "fma_S01E${i}.srt"; 
+	done
+	
+/*
+con mv cambio de nombre de archivo de uno a otro nuevo y con ${i} pongo el valor de i en el nombre
+*/
+
+
+
 
 
 
