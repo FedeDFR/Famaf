@@ -75,7 +75,6 @@
 
 
 #8)	
-
 	mkdir "Serie" && for i in {01..10}; do 
 		touch Serie/fma_S01E${i}_es.srt ;
 	done
