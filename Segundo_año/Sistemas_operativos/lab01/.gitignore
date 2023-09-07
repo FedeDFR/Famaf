@@ -1,0 +1,5 @@
+# Archivos que ignorar
+*.o
+.vscode
+.depend
+output.txt

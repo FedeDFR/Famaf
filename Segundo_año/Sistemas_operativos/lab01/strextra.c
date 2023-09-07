@@ -14,3 +14,14 @@ char * strmerge(char *s1, char *s2) {
     assert(merge != NULL && strlen(merge) == strlen(s1) + strlen(s2));
     return merge;
 }
+
+char * strmerge_with_free(char *s1, char *s2){
+
+    assert(s1 != NULL && s2 != NULL);
+
+    char *new_string = strmerge(s1 , s2);  
+
+    free(s1);    
+
+    return new_string;
+}
