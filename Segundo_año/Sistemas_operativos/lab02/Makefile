@@ -132,6 +132,8 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
+	$U/_hello_world\
+	$U/_pingpong\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
@@ -171,3 +173,28 @@ qemu-gdb: $K/kernel .gdbinit fs.img
 	@echo "*** Now run 'gdb' in another window." 1>&2
 	$(QEMU) $(QEMUOPTS) -S $(QEMUGDB)
 
+##
+##  FOR submitting lab solutions
+##
+
+# LAB := $(shell git symbolic-ref --short HEAD 2> /dev/null)
+# ifeq ($(LAB),)
+# LAB := $(shell cat conf/LAB)
+# endif
+
+ifneq ($(V),@)
+GRADEFLAGS += -v
+endif
+
+print-gdbport:
+	@echo $(GDBPORT)
+
+grade:
+	@echo $(MAKE) clean
+	@$(MAKE) clean || \
+	  (echo "'make clean' failed.  HINT: Do you have another running instance of xv6?" && exit 1)
+	python3 grade-lab2 $(GRADEFLAGS)
+
+grade_docker:
+	docker build --tag 'xv6-env-so' - < Dockerfile.xv6     
+	docker run -it --rm -v $(shell pwd):/home/xv6/xv6-riscv xv6-env-so -c "make grade"  
