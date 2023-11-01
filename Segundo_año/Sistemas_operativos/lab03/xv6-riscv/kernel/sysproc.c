@@ -89,26 +89,3 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
-
-
-uint64
-sys_pstat(void)
-{
-  //COMPLETAR ACA 
-  //cree una system call pstat(pid) que
-  //tome un pid y devuelva su prioridad, la cantidad de veces que fue elegido por
-  //el scheduler y la ultima vez que fue ejecutado
-
-  // Creamos las variables
-  int pid;
-  struct proc *p;
-
-  // Leemos el argumento
-  argint(0 , &pid);
-
-  p = myproc();
-  
-  printf("\n PID:%d Prio:None(RR) ChosenCounter:%d LastExec:%d \n", p->pid , p->chosen_counter , p->last_exec);
-  
-  return 0;
-}

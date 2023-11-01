@@ -697,3 +697,28 @@ procdump(void)
     printf("\n");
   }
 }
+
+/* 
+  Cree una system call pstat(pid) que
+  tome un pid y devuelva su prioridad, la cantidad de veces que fue elegido por
+  el scheduler y la ultima vez que fue ejecutado
+*/
+void
+sys_pstat(void)
+{
+  // Creamos las variables
+  int pid;
+  struct proc *p;
+
+  // Leemos el argumento
+  argint(0 , &pid);
+
+  for(p = proc; p < &proc[NPROC]; p++) {
+
+    if (p->pid == pid) {
+
+      printf("\n PID:%d Prio:None(RR) ChosenCounter:%d LastExec:%d \n", p->pid , p->chosen_counter , p->last_exec);
+
+    }
+  }
+}

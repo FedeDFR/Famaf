@@ -18,19 +18,19 @@
 
     - **Mediciones Q = Original**:
 
-        - [] Realizar el Caso 1: 1 iobench
-        - [] Realizar el Caso 2: 1 cpubench
-        - [] Realizar el Caso 3: 1 iobench y 1 cpubench
-        - [] Realizar el Caso 4: 2 cpubench 
-        - [] Realizar el Caso 5: 2 cpubench y 1 iobench
+        - [X] Realizar el Caso 1: 1 iobench *Di Forte*
+        - [X] Realizar el Caso 2: 1 cpubench *Di Forte*
+        - [X] Realizar el Caso 3: 1 iobench y 1 cpubench *Di Forte*
+        - [X] Realizar el Caso 4: 2 cpubench *Di Forte* 
+        - [X] Realizar el Caso 5: 2 cpubench y 1 iobench *Di Forte*
 
     - **Mediciones Q = Original/10**:
 
-        - [] Realizar el Caso 1: 1 iobench
-        - [] Realizar el Caso 2: 1 cpubench
-        - [] Realizar el Caso 3: 1 iobench y 1 cpubench
-        - [] Realizar el Caso 4: 2 cpubench 
-        - [] Realizar el Caso 5: 2 cpubench y 1 iobench
+        - [X] Realizar el Caso 1: 1 iobench *Di Forte*
+        - [X] Realizar el Caso 2: 1 cpubench *Di Forte*
+        - [X] Realizar el Caso 3: 1 iobench y 1 cpubench *Di Forte*
+        - [X] Realizar el Caso 4: 2 cpubench *Di Forte*
+        - [X] Realizar el Caso 5: 2 cpubench y 1 iobench *Di Forte*
 
 - **Tercera Parte**:
 
@@ -40,9 +40,9 @@
 
 - **Cuarta Parte**:
 
-    - [] Implementar MLFQ
-    - [] Repetir las mediciones
-    - [] Responder pregunta
+    - [X] Implementar MLFQ
+    - [X] Repetir las mediciones
+    - [X] Responder pregunta
 
 - **Extras**:
 
