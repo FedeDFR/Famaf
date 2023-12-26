@@ -1,0 +1,9 @@
+Vamos a compilar con g++, escribo en la terminal
+
+g++ "fiel.cpp"
+
+luego 
+
+./a.out
+
+e ingreso los input que me hagan falta
