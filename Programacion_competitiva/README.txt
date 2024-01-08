@@ -136,9 +136,20 @@ vector <pair<int,int>> v;
 fore(i,0,n) {
     int x; cin >> x;
     v.push_back({x,i});     
-
 }
 
-sort(v.begin(),v.end());
 
+-----------------------------/ Busqueda binaria /-----------------------------
+
+
+int l = 0;
+int r = n-1;
+        
+while(l<=r) {
+    int mid = (l+r)/2;
+    if(sum[mid] >= q) {
+        r = mid-1;
+    } else {
+        l = mid+1;
+    }
 }
