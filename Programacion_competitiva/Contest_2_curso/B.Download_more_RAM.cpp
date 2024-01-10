@@ -24,7 +24,6 @@ int main () {
         cin >> k;
         
         int a[n];
-
         fore(j,0,n) {
 
             int x;
@@ -35,7 +34,6 @@ int main () {
         }
 
         int b[n];
-
         fore(j,0,n) {
 
             int y;

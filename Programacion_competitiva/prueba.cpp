@@ -14,20 +14,11 @@ typedef pair<int,int> ii;
 
 int main () {
 
-    int t;
-    cin >> t;
+ int r= 1e9;
 
-    while (t--) {
-
-        int n;
-        cin >> n;
-
-        fore(i,0,n) {
-            vector<ll> a(n);
-            
-        }
-
-    }
-    
+ while (r--)
+ {
+    cout << "Lindo ";
+ }
     
 }

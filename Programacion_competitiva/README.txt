@@ -27,6 +27,7 @@ e ingreso los input que me hagan falta
 
 using namespace std;
 typedef long long ll;
+typedef pair<int,int> ii;
 
 
 int main () {
@@ -78,6 +79,8 @@ v.push_back(x)              //agrega el elemento x al final del vector
 v.pop_back(x)               //elimina el elemento x
 v.size()                    //tamaño del vector
 sort(v.begin(), v.end())    //ordena el vector con complejidad 0(n*log n)
+vector<int> a(n);                                   //array de n vectores
+lower_bound(a.begin(), a.end(), p) - a.begin();     //devuelve la posicion del menor elemento mayor a p
 
 for(auto i:v){
         cout << i << "";    //imprime los elementos del arreglo
@@ -147,9 +150,12 @@ int r = n-1;
         
 while(l<=r) {
     int mid = (l+r)/2;
-    if(sum[mid] >= q) {
+    if(a[mid] >= q) {
         r = mid-1;
     } else {
         l = mid+1;
     }
 }
+
+
+-----------------------------/  /-----------------------------
