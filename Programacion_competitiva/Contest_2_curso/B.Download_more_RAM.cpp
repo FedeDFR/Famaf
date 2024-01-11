@@ -28,7 +28,6 @@ int main () {
 
             int x;
             cin >> x;
-
             a[j] = x;
             
         }
@@ -38,7 +37,6 @@ int main () {
 
             int y;
             cin >> y;
-
             b[j] = y;
             
         }
