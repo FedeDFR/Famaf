@@ -17,19 +17,8 @@ int main () {
     
     int n;
     cin >> n;
-    string a[n];
-    int x = 0;
+    int m;
+    cin >> m;
 
-    fore(i,0,n) {
-        cin >> a[i];
-        if(a[i] == "X++" || a[i] == "++X") {
-            x++;
-        }
-        if(a[i] == "--X" || a[i] == "X--") {
-            x--;
-        }
-    }
-
-    cout << x << "\n";    
-    
+    cout << (n*m)/2 << "\n";
 }
