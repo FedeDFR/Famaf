@@ -12,6 +12,8 @@ luego
 
 e ingreso los input que me hagan falta
 
+flasgs g++ -O2 -Wall -Wextra -std=c++17 "file.cpp"
+
 
 -----------------------------/ Macros /-----------------------------
 
@@ -42,24 +44,48 @@ int main () {
 https://www.programacionfacil.org/cursos/c++/capitulo-19-funciones-matematicas.html
 
 
------------------------------/ Formulas /-----------------------------
+-----------------------------/ Formulas y funciones/-----------------------------
 
 
-Division techo para int a, b; [a/b]:    (a+b-1)/b
+-Division techo para int a, b; [a/b]:    (a+b-1)/b
 
-Array de sumas parciales a[n]:    sum[n] = sum[n-1]+a[n]     donde sum[0] = 0 
+-Array de sumas parciales a[n]:    sum[n] = sum[n-1]+a[n]     donde sum[0] = 0 
     para calcular la suma entre un a[l] y a[r] siendo l<r:   sum[r+1]-sum[l]
 
-ordenar un Array a[n]: sort(a, a+n)
+-Ordenar un Array a[n]: sort(a, a+n)
 
-Devuelve puntero del primer elementomayor igual a x de un a[n] ordenado: lower_bound(a, a+n, x)
+-Devuelve puntero del primer elementomayor igual a x de un a[n] ordenado: lower_bound(a, a+n, x)
     Con Vectores: lower_bound(v.begin(), v.end(), x)
     Para que te de el indice tendrias que hacer incide = lower_bound(a, a+n, x) - a;
     Con Vectores: indice = lower_bound(v.begin(), v.end(), x) - v.begin();
 
     Si devuelve un indice fuera de rango no existe un elemento mayor o igual
 
-
+-La función memset copia el valor de c (convertido a un unsigned char) a cada uno de los primeros n caracteres en el objeto al cual señala s. La función memset devuelve el valor de s.
+	void *memset ( void *s, int c, size_t n);
+	
+-Busca cualquier carácter que esté en mayúsculas.
+	int isupper(int c);
+	
+-Busca cualquier carácter que sea letra minúscula.
+	int islower(int c);
+	
+-Convierte una letra mayúscula en la minúscula correspondiente.Si el argumento es un carácter para el que isupper resulta verdadero y existe un caracter correspondiente para el cual islower resulta verdadero, la función tolower devuelve elo carácter correspondiente.
+	int tolower(int c);
+	
+-Convierte una letra minúscula a la letra mayúscula correspondiente.Si el argumento es un carácter para el cual islower resulta verdadero y existe un carácter correspondiente para el cual isupper es verdadero, la función toupper devueve el carácter correspondiente.
+	int toupper(int c);
+	
+-Calcula el coseno de x (medido en radianes).
+	double cos(double x);
+	
+-Devuelve el seno de x (medido en radianes).
+	double sin(double x);
+	
+-Devuelve la tangente de x (medida en radianes).
+	double tan(double x);
+	
+		
 -----------------------------/ Tipos de datos y sus tamaños /-----------------------------
 
 
@@ -70,6 +96,10 @@ https://ccia.ugr.es/~jfv/ed1/c/cdrom/cap2/cap24.html
 
 Tiempo aprox de una pc es 1s = 10^8 operaciones
 Funcion de ordenacion de c++ es de o(n log(n))
+
+
+-----------------------------/ Union Find-Disjoint set union /-----------------------------
+
 
 
 -----------------------------/ Vectores /-----------------------------
@@ -159,4 +189,16 @@ while(l<=r) {
 }
 
 
------------------------------/  /-----------------------------
+-----------------------------/ Filas y columnas /-----------------------------
+
+
+//Con estas funciones le asocio un numero a el par de filas y columnas siendo el primer elemento de la primera fila/columna 0, en la segunda columna 1 y asi consecutivamente,
+ la primera fila seria 0 hasta m-1, la segunda fila seria de m hasta 2(m-1) asi hasta la ultuma que seria de n*m hata n(m-1)
+
+int to(nt i, int j) {
+    m*i+j;
+}
+
+ii from(int x) {        //Esta te devuelve el pair del numero asociado de la fila y la columna respectivamente
+    return {x/m, x%m};
+}
