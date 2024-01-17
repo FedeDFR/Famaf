@@ -34,8 +34,11 @@ typedef pair<int,int> ii;
 
 int main () {
     REGALO;
+    ll t;
+    cin>>t;
     
-    
+    while(t--){
+    }
 }
 
 -----------------------------/ Funciones con flotantes /-----------------------------
@@ -94,12 +97,27 @@ https://ccia.ugr.es/~jfv/ed1/c/cdrom/cap2/cap24.html
 
 -----------------------------/ Tiempos y orden /-----------------------------
 
+
 Tiempo aprox de una pc es 1s = 10^8 operaciones
 Funcion de ordenacion de c++ es de o(n log(n))
 
 
 -----------------------------/ Union Find-Disjoint set union /-----------------------------
 
+
+https://cp-algorithms.com/data_structures/disjoint_set_union.html
+
+
+uf_join(int a, int b) {
+    rep[a] = rep[ab];
+}
+
+uf_find(int a) {
+    if(a == uf_find(a)) {       //Si a es igual a mi representante ret a
+        return a;
+    }
+    uf[a] = uf_find(uf[a]);     //Sino busco el representante de donde este a
+}
 
 
 -----------------------------/ Vectores /-----------------------------
