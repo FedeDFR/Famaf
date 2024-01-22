@@ -92,7 +92,7 @@ https://www.programacionfacil.org/cursos/c++/capitulo-19-funciones-matematicas.h
 -----------------------------/ Tipos de datos y sus tamaños /-----------------------------
 
 
-https://ccia.ugr.es/~jfv/ed1/c/cdrom/cap2/cap24.html
+
 
 
 -----------------------------/ Tiempos y orden /-----------------------------

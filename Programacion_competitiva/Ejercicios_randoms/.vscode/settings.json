@@ -66,6 +66,7 @@
     "span": "cpp",
     "regex": "cpp",
     "utility": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "iostream": "cpp"
   }
 }
