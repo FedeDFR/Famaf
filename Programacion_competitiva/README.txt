@@ -35,7 +35,7 @@ typedef pair<int,int> ii;
 int main () {
     REGALO;
     ll t;
-    cin>>t;
+    cin >> t;
     
     while(t--){
     }
