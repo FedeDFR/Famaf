@@ -7,4 +7,8 @@
     startswith()
 ```
 
-- E
+- Retorna una cadena que contenga el nombre de host de la máquina donde se está ejecutando actualmente el intérprete de Python.
+
+```
+    socket.gethostname()
+```
