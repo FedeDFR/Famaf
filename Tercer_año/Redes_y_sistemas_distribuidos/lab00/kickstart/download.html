@@ -1,0 +1,1080 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script language="javascript" type="text/javascript">
+function handleEnter(field, event)
+ {
+ var keyCode = document.all ? event.keyCode : event.which;
+ if (keyCode == 13) {
+ var i;
+ for (i = 0; i < field.form.elements.length; i++)
+ if (field == field.form.elements[i])
+ break;
+ i = (i + 1) % field.form.elements.length;
+ field.form.elements[i].focus();
+ return false;
+ }
+ else
+ return true;
+ }
+ function signoMas()
+ {
+    $('.trigger').removeClass("active");
+ }
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Intercordoba - Horarios y Reservas
+</title><link href="Estilo.css" rel="stylesheet" /><link rel="stylesheet" href="Alert/jquery.alerts.css" />
+
+    <script src="Scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+
+    <script src="Scripts/slide.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#slide').simpleSlide();
+	});
+    </script>
+
+    <link href="Scripts/shadowbox.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="Scripts/shadowbox.js"></script>
+
+    <script type="text/javascript">
+	     Shadowbox.init({
+	     language: 'pt',
+	     player: ['img', 'html', 'swf']
+	     });
+    </script>
+
+    <!-- slide promos -->
+    <link rel="stylesheet" type="text/css" href="Scripts/jquery-slide.css" />
+
+    <script type="text/javascript">
+    function slideSwitch() {
+        var $active = $('#slideshow DIV.active');
+
+        if ( $active.length == 0 ) $active = $('#slideshow DIV:last');
+
+        var $next =  $active.next().length ? $active.next()
+            : $('#slideshow DIV:first');
+
+        $active.addClass('last-active');
+
+        $next.css({opacity: 0.0})
+            .addClass('active')
+            .animate({opacity: 1.0}, 800, function() {
+                $active.removeClass('active last-active');
+            });
+    }
+
+    $(function() {
+        
+    });
+    </script>
+
+    <script type="text/javascript" src="Alert/jquery.js"></script>
+
+    <script type="text/javascript" src="Alert/jquery.alerts.js"></script>
+
+    <script type="text/javascript" src="Alert/jquery.ui.draggable.js"></script>
+
+    <script type="text/javascript"> 
+    $(document).ready(function(){
+        setInterval( "slideSwitch()", 7000 );
+	    $(".trigger").click(function(){
+		    $(".panel").toggle("fast");
+	    });
+	    if($(".panel").is(':hidden'))
+	    {
+	        $(".panel").removeClass("active")
+	    }
+    });
+    </script>
+<script type="text/javascript">
+    function JScript(boton)
+    {
+        document.getElementById(boton.id).style.visibility = 'hidden';
+//        boton.disbled=true;
+//        document.getElementById('btnReservar').disabled=true;
+    }
+    </script>
+<link href="/WebResource.axd?d=0X8fa1DHWg5rMBeIERbSuXdwRYJ-EzsGH3uygQctdhmff0ooEZxhOexJJKCZyQIcoL7DypQeX85b1WVJ9if3_6zJuSOvvhapuVJv4-uYQspYCWD7sl3lbJO4ThjHNLp8bhUHfpOKDigw5zavDcxplaet1j-FGKA23tzcm8q13PU1&amp;t=633398816440000000" type="text/css" rel="stylesheet" /></head>
+<body style="margin: 0 0 0 0;">
+    <form method="post" action="./" id="form1" enctype="multipart/form-data">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTg5NjY0OTk3Mw8WAh4DdXNyBQItMRYCAgMPZBYCAgMPZBYIAgEPZBYCZg9kFgQCAQ9kFgJmD2QWAgIBD2QWCgIHDxAPFggeCkRhdGFNZW1iZXIFA0xvYx4NRGF0YVRleHRGaWVsZAUJTm1EZXN0aW5vHg5EYXRhVmFsdWVGaWVsZAUJQ2REZXN0aW5vHgtfIURhdGFCb3VuZGcWAh4Jb25LZXlEb3duBR9yZXR1cm4gaGFuZGxlRW50ZXIodGhpcywgZXZlbnQpEBU8CiAgQ8OTUkRPQkELIEFMTUFGVUVSVEUIIEVNQkFMU0UJIEhFUk5BTkRPCyBSSU8gQ1VBUlRPDCBSSU8gVEVSQ0VSTwwgU0FOIEFHVVNUSU4MIFZJTExBIE1BUklBHC4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS4JQS4gQ0FCUkFMCkFMTUFGVUVSVEULQUxUTyBGSUVSUk8KQkFKTyBDSElDTw9CQUpPIERFTCBDQVJNRU4FQk9XRVIKQ0FSTkVSSUxMTwxDRVJSTyBERSBPUk8GQ0hVQ1VMB0NPUkRPQkEJQ09SUkFMSVRPDkNSLiBBTE1BRlVFUlRFCUNSLiBCT1dFUhFDUi4gREVTUEXDkUFERVJPUwxDUi4gUi5HQVJDSUENQ1IuIFMuQUdVU1RJTgxDUi4gU09DT05DSE8OREFMTUFDSU8gVkVMRVoMREVTUEXDkUFERVJPCEVMIENSVUNFDUVMIFBPUlRFWlVFTE8MRUwgUVVFQlJBQ0hPCkVMIFRPUlJFT04HRU1CQUxTRQtGT1RIRVJJTkdBTQ1HUkFMLiBDQUJSRVJBDEdSQUwuIERFSEVaQQhIRVJOQU5ETwdIT1RFTEVTB0xBIENSVVoJTEEgTEFHVU5BC0xBUyBCQUpBREFTDExBUyBISUdVRVJBUwxMQVMgUEVSRElDRVMETFVDQQpNT05URSBSQUxPBU9MSVZBClBBTVBBWUFTVEEFUEFTQ08HUklPIElJSQZSSU8gSVYLU0FOIEFHVVNUSU4MU0FOVEEgSVNBQkVMClNBTlRBIFJPU0EIVEFOQ0FDSEEGVElDSU5PDVVTSU5BIEFUT01JQ0EPVklMTEEgREVMIERJUVVFEFZJTExBIERFTCBQQVJRVUULVklMTEEgTUFSSUENVklMTEEgUlVNSVBBTBU8ATECMjcCMzMCNDUCNTQCMTQCMjMCNTcCLTECNTkCMjcCMTcCMTgCMjECMjkCNTECNjECNTIBMQIyOAIyNgIxNQIxOQIxNgIyMgIyNAI0NwIyMAI1OAI0MQIzMQI0MAIzMwI0NAI1MAI0OQI0NQIzNAIzNgI2NQIyNQI1MwI0OAI2MAIzMAI1NgI1NQI2NAIxNAI1NAIyMwIzMgI0MgI0MwI2MwIzNQIzNwIzOQI1NwIzOBQrAzxnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dkZAILDxAPFggfAQUDTG9jHwIFCU5tRGVzdGlubx8DBQlDZERlc3Rpbm8fBGcWAh8FBR9yZXR1cm4gaGFuZGxlRW50ZXIodGhpcywgZXZlbnQpEBU8CiAgQ8OTUkRPQkELIEFMTUFGVUVSVEUIIEVNQkFMU0UJIEhFUk5BTkRPCyBSSU8gQ1VBUlRPDCBSSU8gVEVSQ0VSTwwgU0FOIEFHVVNUSU4MIFZJTExBIE1BUklBHC4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS4JQS4gQ0FCUkFMCkFMTUFGVUVSVEULQUxUTyBGSUVSUk8KQkFKTyBDSElDTw9CQUpPIERFTCBDQVJNRU4FQk9XRVIKQ0FSTkVSSUxMTwxDRVJSTyBERSBPUk8GQ0hVQ1VMB0NPUkRPQkEJQ09SUkFMSVRPDkNSLiBBTE1BRlVFUlRFCUNSLiBCT1dFUhFDUi4gREVTUEXDkUFERVJPUwxDUi4gUi5HQVJDSUENQ1IuIFMuQUdVU1RJTgxDUi4gU09DT05DSE8OREFMTUFDSU8gVkVMRVoMREVTUEXDkUFERVJPCEVMIENSVUNFDUVMIFBPUlRFWlVFTE8MRUwgUVVFQlJBQ0hPCkVMIFRPUlJFT04HRU1CQUxTRQtGT1RIRVJJTkdBTQ1HUkFMLiBDQUJSRVJBDEdSQUwuIERFSEVaQQhIRVJOQU5ETwdIT1RFTEVTB0xBIENSVVoJTEEgTEFHVU5BC0xBUyBCQUpBREFTDExBUyBISUdVRVJBUwxMQVMgUEVSRElDRVMETFVDQQpNT05URSBSQUxPBU9MSVZBClBBTVBBWUFTVEEFUEFTQ08HUklPIElJSQZSSU8gSVYLU0FOIEFHVVNUSU4MU0FOVEEgSVNBQkVMClNBTlRBIFJPU0EIVEFOQ0FDSEEGVElDSU5PDVVTSU5BIEFUT01JQ0EPVklMTEEgREVMIERJUVVFEFZJTExBIERFTCBQQVJRVUULVklMTEEgTUFSSUENVklMTEEgUlVNSVBBTBU8ATECMjcCMzMCNDUCNTQCMTQCMjMCNTcCLTECNTkCMjcCMTcCMTgCMjECMjkCNTECNjECNTIBMQIyOAIyNgIxNQIxOQIxNgIyMgIyNAI0NwIyMAI1OAI0MQIzMQI0MAIzMwI0NAI1MAI0OQI0NQIzNAIzNgI2NQIyNQI1MwI0OAI2MAIzMAI1NgI1NQI2NAIxNAI1NAIyMwIzMgI0MgI0MwI2MwIzNQIzNwIzOQI1NwIzOBQrAzxnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dkZAIPDw9kFgIfBQUfcmV0dXJuIGhhbmRsZUVudGVyKHRoaXMsIGV2ZW50KWQCFg8QD2QWAh8FBR9yZXR1cm4gaGFuZGxlRW50ZXIodGhpcywgZXZlbnQpZGRkAhoPEA9kFgIfBQUfcmV0dXJuIGhhbmRsZUVudGVyKHRoaXMsIGV2ZW50KWRkZAIDD2QWAmYPZBYCAgEPDxYEHgZIZWlnaHQbAAAAAAAAAAABAAAAHgRfIVNCAoABZBYEAgMPDxYCHgdWaXNpYmxlaGQWAgIBDzwrABECARAWABYAFgAMFCsAAGQCBQ8PFgIfCGhkFgICAQ88KwARAgEQFgAWABYADBQrAABkAgcPZBYCZg9kFgICAQ9kFgICCQ8QZGQWAGQCCQ9kFgJmD2QWAgIHD2QWBgItDxAPFggfAQUDTG9jHwIFCU5tRGVzdGlubx8DBQlDZERlc3Rpbm8fBGdkEBU8CiAgQ8OTUkRPQkELIEFMTUFGVUVSVEUIIEVNQkFMU0UJIEhFUk5BTkRPCyBSSU8gQ1VBUlRPDCBSSU8gVEVSQ0VSTwwgU0FOIEFHVVNUSU4MIFZJTExBIE1BUklBHC4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS4JQS4gQ0FCUkFMCkFMTUFGVUVSVEULQUxUTyBGSUVSUk8KQkFKTyBDSElDTw9CQUpPIERFTCBDQVJNRU4FQk9XRVIKQ0FSTkVSSUxMTwxDRVJSTyBERSBPUk8GQ0hVQ1VMB0NPUkRPQkEJQ09SUkFMSVRPDkNSLiBBTE1BRlVFUlRFCUNSLiBCT1dFUhFDUi4gREVTUEXDkUFERVJPUwxDUi4gUi5HQVJDSUENQ1IuIFMuQUdVU1RJTgxDUi4gU09DT05DSE8OREFMTUFDSU8gVkVMRVoMREVTUEXDkUFERVJPCEVMIENSVUNFDUVMIFBPUlRFWlVFTE8MRUwgUVVFQlJBQ0hPCkVMIFRPUlJFT04HRU1CQUxTRQtGT1RIRVJJTkdBTQ1HUkFMLiBDQUJSRVJBDEdSQUwuIERFSEVaQQhIRVJOQU5ETwdIT1RFTEVTB0xBIENSVVoJTEEgTEFHVU5BC0xBUyBCQUpBREFTDExBUyBISUdVRVJBUwxMQVMgUEVSRElDRVMETFVDQQpNT05URSBSQUxPBU9MSVZBClBBTVBBWUFTVEEFUEFTQ08HUklPIElJSQZSSU8gSVYLU0FOIEFHVVNUSU4MU0FOVEEgSVNBQkVMClNBTlRBIFJPU0EIVEFOQ0FDSEEGVElDSU5PDVVTSU5BIEFUT01JQ0EPVklMTEEgREVMIERJUVVFEFZJTExBIERFTCBQQVJRVUULVklMTEEgTUFSSUENVklMTEEgUlVNSVBBTBU8ATECMjcCMzMCNDUCNTQCMTQCMjMCNTcCLTECNTkCMjcCMTcCMTgCMjECMjkCNTECNjECNTIBMQIyOAIyNgIxNQIxOQIxNgIyMgIyNAI0NwIyMAI1OAI0MQIzMQI0MAIzMwI0NAI1MAI0OQI0NQIzNAIzNgI2NQIyNQI1MwI0OAI2MAIzMAI1NgI1NQI2NAIxNAI1NAIyMwIzMgI0MgI0MwI2MwIzNQIzNwIzOQI1NwIzOBQrAzxnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dkZAJODxAPFggfAQUFUnV0YXMfAgUGTm1SdXRhHwMFBkNkUnV0YR8EZ2QQFRsOU0lFUlJBUyBDSElDQVMRUklPIElJSSB4IFJVVEEgMzYZUklPIElJSSB4IFJVVEEgMzYgRElSRUNUTxNSSU8gSUlJIERJRkVSRU5DSUFME1JJTyBJSUkgeCBDT1JSQUxJVE8UUklPIElJSSAtIFNBTlRBIFJPU0ESUklPIElJSSAtIEhFUk5BTkRPFkNCQSAtIFJJTyBJViB4IENBQlJFUkEPQ09SRE9CQSAtIE9MSVZBFVJJTyBJSUkgLSBWSUxMQSBNQVJJQRNDT1JET0JBIC0gTEEgTEFHVU5BGENCQSAtIFJJTyBJViB4IENPUlJBTElUTxtDT1JET0JBIC0gR1JBTC5DQUJSRVJBIHggUjkbQ09SRE9CQSAtIE9MSVZBIHggQ09SUkFMSVRPHkNCQSAtIFJJTyBJViB4IENBQlJFUkEgRElSRUNUTx9DT1JET0JBIC0gTEEgTEFHVU5BIHggQ09SUkFMSVRPHkNCQSAtIFJJTyBJViB4IENBQlJFUkEgLSBBTE1BRiZDQkEgLSBSSU8gSVYgeCBDQUJSRVJBIERJUkVDVE8gLSBBTE1BRiFSSU8gSUlJIHggUlVUQSAzNiBESVJFQ1RPIHggREVTUC4RVVJCQU5PIE1FTkRJT0xBWkEPVVJCQU5PIFVOUVVJTExPE1VSQkFOTyBSSU8gQ0VCQUxMT1MSVVJCQU5PIFNBTFNJUFVFREVTBUJPV0VSFlNJRVJSQVMgQ0hJQ0FTIERJUkVDVE8UUklPIENVQVJUTyAtIEVNQkFMU0ULVEFSSkVUQSBUSU4VGwExATIBMwE0ATUBNgE3ATgBOQIxMAIxMQIxMgIxMwIxNAIxNQIxNgIxNwIxOAIxOQIyMQIyMgIyMwIyNAIyNQIyNgIyNwIyOBQrAxtnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dkZAJSDxAPFggfAQUHTW90aXZvcx8CBQhObU1vdGl2bx8DBQhDZE1vdGl2bx8EZ2QQFQoBIAdUcmFiYWpvB0VzdHVkaW8GUGxhY2VyBE90cm8NVHVybm8gbcOpZGljbxNUcmF0YW1pZW50byBtw6lkaWNvDEFjb21wYcOxYW50ZRJBY29tcGHDsWFudGUgc8OzbG8RTm8gaW5mb3JtYSBtb3Rpdm8VCgEwATEBMgEzATQBNQE2ATcBOAE5FCsDCmdnZ2dnZ2dnZ2dkZAIOD2QWAmYPZBYCAgEPZBYCAgUPPCsAEQIBEBYAFgAWAAwUKwAAZBgEBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBwUNY2hrVXNyQWJvbmFkbwUGaW1PcHQxBQVpbUxvZwUFaW1SZWcFBWltUmVzBQhpbUVkaXRVcwUIaW1DZXJyYXIFDmdyaWxsYVJlc2VydmFzD2dkBQ9ncmlsbGFTZXJ2aWNpb3MPZ2QFDmdyaWxsYUNhYmVjZXJhD2dkb7ZaKnXx0tyxaPAOar6af0y9OOA4eIG5BWDUj54eUEA=" />
+
+
+<script src="/ScriptResource.axd?d=G0u_KNC5nXdJT4zki0OhO-x5IvMn6Z7vxPjDiWI2hORoglg467biBRW0bq2DPC0NW243ce2j9KroY--FGJf6iGPhQKnZeCYTi5bSzHFcyr4NpCqEUNTxU8m5EJHsk45Fv8HJ5cyg3wu96lqCvzN0zzlRv5gM1COb5_S-_nNxT_8Y3wNoEbFnuIP2ejzutKQF0&amp;t=ffffffffadad19fc" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=l87dajE00GZFDFx56-8nnoNVGccj2J5oE7WWgIcICOJwcG-uh0hPmWcaRrep5CRc27YalMO5ajUwiaE3hJHttc7GMvVT2WIxVFn6lKzsEWDAQZh3NC18YUvMNLK1OGLMPHmymEt2LwOFlawFoH-W28N8YnJQDOn8pt37ZCPPkfY1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=Syd1_lMC0hdJQOo4AGHpGh9T7YTW5FML0oE1rO5vNTjWiEOwm-d8DumwQenpJGK4gfEh5OjeyuMiqPhMzEY69NytMJxsW-4EwRijOjNgm18AUZ68IABcVmyNbVkO5lbZUakXtLJQgR8oMWSGAZhLY0ueHHwQJzl0ERXBZ_n-I7g1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=TsZ4nJO8LF5DSgOCjOG-62_k7CaXYNN5fvdQhF5bvlb0kkWUjEwdI9WLe-1y0Njg4YlQVM9Z2-HmorSH5_uTE-7EVz7948nOfZuJlxv9YpZnOxrkfG3C3h_gnigBj9zey_6CTLaR9i_sZaFrrvZbUo-BXeJuebiDJKn-vpdFPKqiamB1jmygKsHRSzYpr-Ng0&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=joe9eGu01z06T-rvmF5xaaqp0QdXJgt8thDCQkvAZP4LPtlfiKDOLvBxDDCEqDy2O2GAIyhkLVBCj40JKaxEXjmCxdyI4VssDmDSFoYEvqtMQUyIt4G26hbhsE0hCF78XhY0AAoeHDgQzbstkG-EQQHJCqH69MGl-jHqHhnZvik1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=RlDQRW0zrXZ4itGHXcz-3XYrlNstOzriN8B5er26JTWxrh7nHwzcbwREBN0KXfNPZMDwKeJE7aX6NonztqmnG3kGknIAfKKIK8vW_4nSo-oEPLHM75a-XQ_AFnWLKklqWm7Hr6Po7YFVwR9oYzQx7X-wlpkuPMQV9Awi7exqjPM1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=AvuoInAMc-9mTFABy9Tz64kRa9q4tvjbOmWcm8N6J0Jx_UyrQmNuT-4X95pFC1kK7iBJqy-IjX7ZneOsPgVlrxmSLTp8RUSvhryFzlkjfd8Vj1PUmsrXvAM9vuQNLc5oys_HLmImr5RAjlVeMIDoDxTebYa0Qp5qTVLvsSRzkyU1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=zBYgJz39KCXLPpfPPZSU4TxezdwqNrKRES8CGXs5gRUSzLxr5pVdQZyOWFS83dCk9WI8ElgO3w3TO9FKulg49Eu_ZpIxXS1cEFaAqhUTOmcz0nLEYUwHg8li7lQPFL8YtWOTabEjhnQqgNtdSG3QwyQk7H1s9hY6Z6sfzayzBpk1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=N3HOm3SgZrB2fXmMwmm17IA_YZB0NWXNnheS-VUQSeDSJY7eKTuqyEMiwjSMa0vsaHwbM4pRlvKZYCe5M5CdgOaNwG0AHCZAPooXLaY3Y0_8QWPPclVPFB-FS3Vvt6zYOM5OMETbINAeP8AACMVgCjzPsfpm8SJdtDtErkrBJs81&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=S_ja_28ywixZCXpGFotX9n3Wr0rcHVwMDQ9YhFETJQCJ_-7cCb_TQhg5gxt-O7sTtMB2EDlUaFQAMKDyP8t_QXBH_7f8Q31awG7UZIkCiTSessurzjIinfXmmcGmahpVrPvn9kWgwTujOdR5cqxcLKojy0rMjyEPu5yheMC9q_o1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=s-0PwjaOywJba_mBp-Zp7GkG5h6SUrp0yuO8EgtHajvsjWFaPqu3tRAyDIL4cHPyBjL-PC8phaeVwBqcDMU_HLqpdlUOdu7CnIIQf0Sqyw4ABiSF8ZvEaWmcluenW_TiwtpG2caNySuBURpf_hbve-TAm3aQ221BK3YiBWPYRho1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=8GJSv39v51OpNcwOkbXhMKSNR1WXIkGs7p0y02mGG7x6q8-I9xZg0du1kuv_e6BL95r5R94qY4v48Hoydu66FRZnOxISlS_PR96Dyvp6dWVWmh0PFWOH0ola_qmG1lq4U3-pQIQvY9PZQ6Du3pB3wBmvNs0lXOdtBObSXfwPYjxzjc8UrUfaDDodZa0P6Tuj0&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=quBYy3D55mCTKxC4iMwKezjD545VX0O-P5hEVEQwYvr7vBVu9zxC3jM2VAZSOUeeSdsFuB3envzTfIqHfjR-tVie4UCaFaX0recXjP30brhKNlAF2exEkw87vCy50U7UdGAOaWsdtv8gOAjFd91le7oIgyWSpKckh4OJzNVZ9bj1mWuKYkx_b7xnlL6mO2p00&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=RVHeXUqJwsUu5RDTOyDHES29MbWhLlytw3Kin1EqNkW88BZGqZIg-3U3JcD8xXpy5_GK16xelxhsNiv07vfPhbBDJj1HuH55odNtlWdH7ZxbuF5lbwTESCddJrnHYwQ7N1EEGK72wrxwC2m0Tzhsx3I1RsXcJ4gXjnKKznlNs8ZuyGzKfHyzzvd5N_aBQIyZ0&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=FvWYh4k5Ep08lQ-tLxCkE4KqoMI2Iyjlp47QRnghW7kquSqBb9V-AN7X6LZFLNqNAOmSpgwXYIkQp1caTIVHcWe8yY_yfSRmAsDW5dVWgTF32mwmgoDdZL5KckrW2woaQEdpSqnmsInf4YD1xIfdrYeVp24l3rIYOtzNQnabl-8P-Py-C1ER8rLWz7Sc8W-C0&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=wHx144lyqTsj55XdYSV8-jLFhwWTjgaoepI3cr3MxlSydUUw8PvAqBtKQuoZacEpUL1me1o99Edf2kDMVkunrqO5y4Ks2-z-ANn5-FI8pgCvR6n0f8YNIFn3moSSncahlgZWd6fZ4v8_uI5NHYLoP73b88cIohd4DXmd3jmU9-M1&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=S_JivWU3DuNVFYyROFCUvIHtPe_KRwgEYpE39M_eloOjHZj2K1nc0qjhLqaSLmOfaywvuM6AqOYM1Ekdmn0D2CC-on7uDg7eIMSlNk9yR37FghSSF0rbcj2jzQF8g2ZSjzP6OjKjE8CQqEdua-OjYu2TB50BRWRiThcNPs1qAL2RwRW_LukE6yCmKEeTiBu90&amp;t=ffffffff8b3ffb57" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CB9846D7" />
+        
+        <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; height: 100%">
+            <tr style="text-align: center">
+                <td>
+                    <div id="top">
+                        <div class="menu">
+                            <ul id="dropdownmenu">
+                                <li><a href="http://www.intercordoba.com.ar/intercordoba-quienes-somos.php">Empresa</a></li>
+                                <li><a href="#">Nuestros Servicios</a>
+                                    <ul>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-recorridos-paradas.php">Recorridos
+                                            y Paradas</a></li>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-horarios-tarifas.php">Horarios
+                                            y tarifas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="http://www.intercordoba.com.ar/intercordoba-boleterias.php">Boleterías</a></li>
+                                <li><a href="http://www.intercordoba.com.ar/intercordoba-ecomex.php">Sistema de Encomiendas</a></li>
+                                <li><a href="#">Sistema de Abonos</a>
+                                    <ul>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-abonos-interurbanos.php">Serivicio
+                                            Interurbano</a></li>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-abonos-urbano.php">Serivicio
+                                            Urbano</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="http://www.intercordoba.com.ar/intercordoba-noticias-eventos.php">Noticias
+                                    / Eventos</a></li>
+                                <li><a href="#">Contacto</a>
+                                    <ul>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-contacto.php">Consultas y reclamos</a></li>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-contacto-objetos.php">Objetos
+                                            extraviados</a></li>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-contacto-rrhh.php">RR. HH.</a></li>
+                                        <li><a href="http://www.intercordoba.com.ar/intercordoba-contacto-publicidad.php">Publicidad</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="http://www.intercordoba.com.ar/index.php">Página de inicio</a></li>
+                            </ul>
+                        </div>
+                        <!-- Slide fotos top -->
+                        <div id="slide" style="position: relative;">
+                            <img alt="" src="Imagenes/slide-top-3.jpg" width="797" height="200" style="position: absolute;
+                                top: 6px; right: 2px; z-index: 0;" class="" />
+                            <img alt="" src="Imagenes/slide-top-2.jpg" width="797" height="200" style="position: absolute;
+                                top: 6px; right: 2px; z-index: 10;" class="slide-active" />
+                            <img alt="" src="Imagenes/slide-top-5.jpg" width="797" height="200" style="position: absolute;
+                                top: 6px; right: 2px; z-index: 0;" class="" />
+                            <img alt="" src="Imagenes/slide-top-1.jpg" width="797" height="200" style="position: absolute;
+                                top: 6px; right: 2px; z-index: 0;" class="" />
+                        </div>
+                        <a href="http://www.intercordoba.com.ar/index.php">
+                            <img class="logo" src="Imagenes/logo-intercordoba.png" alt="Ir al inicio :: Intercordoba"
+                                title="Ir al inicio :: Intercordoba" width="329" height="68" />
+                        </a>
+                        
+                        <span class="facebook-megusta">
+                            <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FIntercordoba%2F114608758566432&amp;send=false&amp;layout=button_count&amp;width=320&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21"
+                                scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 120px;
+                                height: 21px;"></iframe>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr style="text-align: center;">
+                <td>
+                    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; height: 100%">
+                        <tr style="text-align: center">
+                            <td>
+                                <div id="panelReserva" align="center">
+	
+                                    <div id="upGral">
+		
+                                            <table width="100%">
+                                                <tr>
+                                                    <td style="width: 180px">
+                                                    </td>
+                                                    <td valign="top" style="text-align: center;">
+                                                        <div id="upPanelBuscar">
+			
+                                                                <div id="widget" align="center" style="text-align: center">
+				
+                                                                    <table width="100%" style="text-align: center;">
+                                                                        <tr>
+                                                                            <td align="left" colspan="1" style="width: 25%; height: 25%">
+                                                                            </td>
+                                                                            <td align="left" colspan="2" style="width: 50%">
+                                                                                <span id="lblNuestrosServicios" class="TextoRojoGde" style="text-align: left">NUESTROS SERVICIOS</span></td>
+                                                                            <td align="left" colspan="1" style="width: 25%; height: 25px">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="left" colspan="1" style="width: 25%; height: 25%">
+                                                                            </td>
+                                                                            <td align="left" colspan="2" style="width: 50%">
+                                                                                <span id="lblSeleccionaDatos" class="TextoFondoGris" style="display:inline-block;text-align: left">Seleccione los siguientes datos:</span></td>
+                                                                            <td align="left" colspan="1" style="width: 25%; height: 25px">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="left" colspan="1" style="width: 25%; height: 25%">
+                                                                            </td>
+                                                                            <td align="left" colspan="2" style="width: 50%">
+                                                                            </td>
+                                                                            <td align="left" colspan="1" style="width: 25%; height: 25px">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="right" style="height: 25%; width: 25%;">
+                                                                            </td>
+                                                                            <td align="right" style="height: 30px; width: 22%;">
+                                                                                <span id="lblOrigen" class="TextoRojo"><b><font face="Rod">ORIGEN</font></b></span></td>
+                                                                            <td align="left" style="height: 30px; width: 28%;">
+                                                                                <select name="ddlDesde" id="ddlDesde" onKeyDown="return handleEnter(this, event)">
+					<option selected="selected" value="1">  C&#211;RDOBA</option>
+					<option value="27"> ALMAFUERTE</option>
+					<option value="33"> EMBALSE</option>
+					<option value="45"> HERNANDO</option>
+					<option value="54"> RIO CUARTO</option>
+					<option value="14"> RIO TERCERO</option>
+					<option value="23"> SAN AGUSTIN</option>
+					<option value="57"> VILLA MARIA</option>
+					<option value="-1">.--------------------------.</option>
+					<option value="59">A. CABRAL</option>
+					<option value="27">ALMAFUERTE</option>
+					<option value="17">ALTO FIERRO</option>
+					<option value="18">BAJO CHICO</option>
+					<option value="21">BAJO DEL CARMEN</option>
+					<option value="29">BOWER</option>
+					<option value="51">CARNERILLO</option>
+					<option value="61">CERRO DE ORO</option>
+					<option value="52">CHUCUL</option>
+					<option value="1">CORDOBA</option>
+					<option value="28">CORRALITO</option>
+					<option value="26">CR. ALMAFUERTE</option>
+					<option value="15">CR. BOWER</option>
+					<option value="19">CR. DESPE&#209;ADEROS</option>
+					<option value="16">CR. R.GARCIA</option>
+					<option value="22">CR. S.AGUSTIN</option>
+					<option value="24">CR. SOCONCHO</option>
+					<option value="47">DALMACIO VELEZ</option>
+					<option value="20">DESPE&#209;ADERO</option>
+					<option value="58">EL CRUCE</option>
+					<option value="41">EL PORTEZUELO</option>
+					<option value="31">EL QUEBRACHO</option>
+					<option value="40">EL TORREON</option>
+					<option value="33">EMBALSE</option>
+					<option value="44">FOTHERINGAM</option>
+					<option value="50">GRAL. CABRERA</option>
+					<option value="49">GRAL. DEHEZA</option>
+					<option value="45">HERNANDO</option>
+					<option value="34">HOTELES</option>
+					<option value="36">LA CRUZ</option>
+					<option value="65">LA LAGUNA</option>
+					<option value="25">LAS BAJADAS</option>
+					<option value="53">LAS HIGUERAS</option>
+					<option value="48">LAS PERDICES</option>
+					<option value="60">LUCA</option>
+					<option value="30">MONTE RALO</option>
+					<option value="56">OLIVA</option>
+					<option value="55">PAMPAYASTA</option>
+					<option value="64">PASCO</option>
+					<option value="14">RIO III</option>
+					<option value="54">RIO IV</option>
+					<option value="23">SAN AGUSTIN</option>
+					<option value="32">SANTA ISABEL</option>
+					<option value="42">SANTA ROSA</option>
+					<option value="43">TANCACHA</option>
+					<option value="63">TICINO</option>
+					<option value="35">USINA ATOMICA</option>
+					<option value="37">VILLA DEL DIQUE</option>
+					<option value="39">VILLA DEL PARQUE</option>
+					<option value="57">VILLA MARIA</option>
+					<option value="38">VILLA RUMIPAL</option>
+
+				</select></td>
+                                                                            <td align="left" style="height: 25px; width: 25%;">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="right" style="height: 25%; width: 25%;">
+                                                                            </td>
+                                                                            <td align="right" style="height: 30px; width: 22%;">
+                                                                                <span id="lblDestino" class="TextoRojo"><b><font face="Rod">DESTINO</font></b></span></td>
+                                                                            <td align="left" style="height: 30px; width: 28%;">
+                                                                                <select name="ddlHasta" id="ddlHasta" onKeyDown="return handleEnter(this, event)">
+					<option selected="selected" value="1">  C&#211;RDOBA</option>
+					<option value="27"> ALMAFUERTE</option>
+					<option value="33"> EMBALSE</option>
+					<option value="45"> HERNANDO</option>
+					<option value="54"> RIO CUARTO</option>
+					<option value="14"> RIO TERCERO</option>
+					<option value="23"> SAN AGUSTIN</option>
+					<option value="57"> VILLA MARIA</option>
+					<option value="-1">.--------------------------.</option>
+					<option value="59">A. CABRAL</option>
+					<option value="27">ALMAFUERTE</option>
+					<option value="17">ALTO FIERRO</option>
+					<option value="18">BAJO CHICO</option>
+					<option value="21">BAJO DEL CARMEN</option>
+					<option value="29">BOWER</option>
+					<option value="51">CARNERILLO</option>
+					<option value="61">CERRO DE ORO</option>
+					<option value="52">CHUCUL</option>
+					<option value="1">CORDOBA</option>
+					<option value="28">CORRALITO</option>
+					<option value="26">CR. ALMAFUERTE</option>
+					<option value="15">CR. BOWER</option>
+					<option value="19">CR. DESPE&#209;ADEROS</option>
+					<option value="16">CR. R.GARCIA</option>
+					<option value="22">CR. S.AGUSTIN</option>
+					<option value="24">CR. SOCONCHO</option>
+					<option value="47">DALMACIO VELEZ</option>
+					<option value="20">DESPE&#209;ADERO</option>
+					<option value="58">EL CRUCE</option>
+					<option value="41">EL PORTEZUELO</option>
+					<option value="31">EL QUEBRACHO</option>
+					<option value="40">EL TORREON</option>
+					<option value="33">EMBALSE</option>
+					<option value="44">FOTHERINGAM</option>
+					<option value="50">GRAL. CABRERA</option>
+					<option value="49">GRAL. DEHEZA</option>
+					<option value="45">HERNANDO</option>
+					<option value="34">HOTELES</option>
+					<option value="36">LA CRUZ</option>
+					<option value="65">LA LAGUNA</option>
+					<option value="25">LAS BAJADAS</option>
+					<option value="53">LAS HIGUERAS</option>
+					<option value="48">LAS PERDICES</option>
+					<option value="60">LUCA</option>
+					<option value="30">MONTE RALO</option>
+					<option value="56">OLIVA</option>
+					<option value="55">PAMPAYASTA</option>
+					<option value="64">PASCO</option>
+					<option value="14">RIO III</option>
+					<option value="54">RIO IV</option>
+					<option value="23">SAN AGUSTIN</option>
+					<option value="32">SANTA ISABEL</option>
+					<option value="42">SANTA ROSA</option>
+					<option value="43">TANCACHA</option>
+					<option value="63">TICINO</option>
+					<option value="35">USINA ATOMICA</option>
+					<option value="37">VILLA DEL DIQUE</option>
+					<option value="39">VILLA DEL PARQUE</option>
+					<option value="57">VILLA MARIA</option>
+					<option value="38">VILLA RUMIPAL</option>
+
+				</select></td>
+                                                                            <td align="left" style="height: 25px; width: 25%;">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="right" style="height: 25%; width: 25%;">
+                                                                            </td>
+                                                                            <td align="right" style="height: 30px; width: 22%;">
+                                                                                <span id="lblFecha" class="TextoRojo"><b><font face="Rod">FECHA</font></b></span></td>
+                                                                            <td align="left" style="height: 30px; width: 28%;">
+                                                                                <input name="txtFecha" type="text" value="20/3/2024" id="txtFecha" onKeyDown="return handleEnter(this, event)" />
+                                                                                
+                                                                            </td>
+                                                                            <td align="left" style="height: 25px; width: 25%;">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="right" style="height: 25%; width: 25%;">
+                                                                            </td>
+                                                                            <td align="right" style="height: 30px; width: 22%;">
+                                                                                <span id="lblTipoServicio" class="TextoRojo"><b><font face="Rod">SERVICIO</font></b></span></td>
+                                                                            <td align="left" style="height: 30px; width: 28%;">
+                                                                                <select name="ddlServicio" id="ddlServicio" onKeyDown="return handleEnter(this, event)">
+					<option selected="selected" value="0">Todos</option>
+					<option value="1">Regular Com&#250;n</option>
+					<option value="2">Regular Diferencial</option>
+					<option value="3">Regular Directo</option>
+
+				</select></td>
+                                                                            <td align="left" style="height: 25px; width: 25%;">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="right" style="width: 25%;">
+                                                                            </td>
+                                                                            <td align="right" style="width: 22%;">
+                                                                            </td>
+                                                                            <td align="left" style="width: 28%;">
+                                                                                <input type="submit" name="btnBuscar" value="BUSCAR" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnBuscar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnBuscar" class="botones-forms" /></td>
+                                                                            <td align="left" style="width: 25%;">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td align="right" style="height: 25%; width: 25%;">
+                                                                            </td>
+                                                                            <td align="left" colspan="2" style="height: 30px; width: 50%;">
+                                                                                
+                                                                                </td>
+                                                                            <td align="left" style="height: 25px; width: 25%;">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                
+			</div>
+                                                            
+		</div>
+                                                    </td>
+                                                    <td valign="top" style="">
+                                                        <div id="upPanelMostrar">
+			
+                                                                <div id="panelMostrar" class="DivCenter" align="center">
+				
+                                                                    <div class="DivCenter">
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                       
+                                                                        
+                                                                    </div>
+                                                                
+			</div>
+                                                                <input type="submit" name="lkbLoguear" value="" id="lkbLoguear" disabled="disabled" class="aspNetDisabled" />
+                                                                <input type="submit" name="lkbAnular" value="" id="lkbAnular" disabled="disabled" class="aspNetDisabled" />
+                                                                <input type="submit" name="lkbRegis" value="" id="lkbRegis" disabled="disabled" class="aspNetDisabled" />
+                                                                                        <input type="submit" name="lkbReserva" value=" | " id="lkbReserva" disabled="disabled" class="aspNetDisabled" />
+                                                            
+		</div>
+                                                    </td>
+                                                    <td style="width: 180px">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                        
+	</div>
+                                    <div id="upProgress" style="display:none;">
+		
+                                            <div id="panelProgress" class="ModalPopupPanel" align="center" style="vertical-align: middle;
+                                                text-align: center; left: 45%; position: fixed; top: 250px; z-index: 1;">
+			
+                                                <br />
+                                                <img id="Image4" src="Imagenes/progress5.gif" />
+		</div>
+                                        
+	</div>
+                                    <div id="upPanelLogin">
+		
+                                            <div id="popUpPanelLogin" class="ModalPopupPanel" align="center" style="display: none">
+			
+                                                
+                                                
+                                                <table style="text-align: center; width: 100%;">
+                                                    <tr>
+                                                        <td style="text-align: center" colspan="2">
+                                                            <span id="lblINICIARSESION"><b><font face="Verdana" color="Black" size="3">INICIAR SESIÓN</font></b></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 50%" align="right">
+                                                            <span id="Label8"><font face="Verdana" size="3">DNI - Usuario:</font></span></td>
+                                                        <td style="width: 50%" align="left">
+                                                            <input name="txtDoc" type="text" id="txtDoc" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 50%" align="right">
+                                                            <span id="Label9"><font face="Verdana" size="3">Contraseña:</font></span></td>
+                                                        <td style="width: 50%" align="left">
+                                                            <input name="txtPas" type="password" id="txtPas" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 50%; height: 17px;" align="right">
+                                                            <input type="submit" name="btnLogin" value="Ingresar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnLogin&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnLogin" /></td>
+                                                        <td style="width: 50%; height: 17px;" align="left">
+                                                            <input type="submit" name="btnCanLog" value="Cancelar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnCanLog&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnCanLog" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center" colspan="2">
+                                                            </td>
+                                                    </tr>
+                                                </table>
+                                                <input type="submit" name="lkbCon" value="" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;lkbCon&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="lkbCon" />
+                                                <input type="submit" name="lkbReenvio" value="" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;lkbReenvio&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="lkbReenvio" /><br />
+                                                
+                                                <input type="submit" name="lkbRecCon" value="Recuperar Contraseña" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;lkbRecCon&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="lkbRecCon" />
+		</div>
+                                        
+	</div>
+                                    <div id="upPanelReservar">
+		
+                                            <div id="popUpPanelReserva" class="ModalPopupPanel" align="center" style="display: none">
+			
+                                                <table style="text-align: center; width: 100%;">
+                                                    <tr>
+                                                        <td style="text-align: center" colspan="2">
+                                                            <span id="lblRESERVARPASAJES"><b><font face="Verdana" color="Black" size="3">RESERVAR PASAJES</font></b></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 50%" align="right">
+                                                            <span id="Label19" style="display:inline-block;"><font face="Verdana" size="3">Cantidad de Asientos:</font></span></td>
+                                                        <td style="width: 50%" align="left">
+                                                            <select name="ddlAsientos" id="ddlAsientos">
+
+			</select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="width: 50%">
+                                                            </td>
+                                                        <td align="left" style="width: 50%">
+                                                            </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="width: 50%">
+                                                            <span id="Label21" style="display:inline-block;"><font face="Verdana" size="3">Sube en:</font></span></td>
+                                                        <td align="left" style="width: 50%">
+                                                            <select name="ddlSubeEn" id="ddlSubeEn">
+
+			</select></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 50%" align="right">
+                                                            <span id="Label20"><font face="Verdana" size="3">Contraseña:</font></span></td>
+                                                        <td style="width: 50%" align="left">
+                                                            <input name="txtConRes" type="password" id="txtConRes" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 50%" align="right">
+                                                            <input type="submit" name="btnReservar" value="Reservar" onclick="JScript(this);WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnReservar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnReservar" /></td>
+                                                        <td style="width: 50%" align="left">
+                                                            <input type="submit" name="btnCanReservar" value="Cancelar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnCanReservar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnCanReservar" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center" colspan="2">
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            
+		</div>
+                                        
+	</div>
+                                    <div id="upPanelRegUser">
+		
+                                            
+                                            
+                                            
+                                            <div id="popUpPanelRegisUer" class="ModalPopupPanel" style="display: none">
+			
+                                                <table width="100%" style="width: 100%">
+                                                    <tr>
+                                                        <td style="height: 21px; text-align: right; width: 1px;">
+                                                        </td>
+                                                        <td colspan="2" style="height: 21px; text-align: center">
+                                                            <span id="lblREGISTRARUSUARIO"><b><font face="Verdana" color="Black" size="3">REGISTRAR USUARIO</font></b></span>
+                                                        </td>
+                                                        <td style="height: 21px; text-align: left; width: 1px;">
+                                                            <span id="lblEspacioValidadores" style="display:inline-block;"><font color="Red"></font></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1px;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label16"><font face="Verdana" size="3">Nombre:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtNombre" type="text" maxlength="25" id="txtNombre" /></td>
+                                                        <td style="text-align: left; width: 1px;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1px;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label23"><font face="Verdana" size="3">Apellido:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtApellido" type="text" maxlength="25" id="txtApellido" /></td>
+                                                        <td style="text-align: left; width: 1px;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label10"><font face="Verdana" size="3">DNI - Usuario:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtDocReg" type="text" maxlength="9" id="txtDocReg" />
+                                                        </td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label13"><font face="Verdana" size="3">Contraseña:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtPasReg" type="password" maxlength="15" id="txtPasReg" /></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label15" style="display:inline-block;"><font face="Verdana" size="3">Repita Contraseña:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtPasReg2" type="password" maxlength="15" id="txtPasReg2" /></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label11"><font face="Verdana" size="3">Domicilio:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtDom" type="text" maxlength="50" id="txtDom" /></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label24"><font face="Verdana" size="3">Localidad:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <select name="ddlLoc" id="ddlLoc">
+				<option value="1">  C&#211;RDOBA</option>
+				<option value="27"> ALMAFUERTE</option>
+				<option value="33"> EMBALSE</option>
+				<option value="45"> HERNANDO</option>
+				<option value="54"> RIO CUARTO</option>
+				<option value="14"> RIO TERCERO</option>
+				<option value="23"> SAN AGUSTIN</option>
+				<option value="57"> VILLA MARIA</option>
+				<option value="-1">.--------------------------.</option>
+				<option value="59">A. CABRAL</option>
+				<option value="27">ALMAFUERTE</option>
+				<option value="17">ALTO FIERRO</option>
+				<option value="18">BAJO CHICO</option>
+				<option value="21">BAJO DEL CARMEN</option>
+				<option value="29">BOWER</option>
+				<option value="51">CARNERILLO</option>
+				<option value="61">CERRO DE ORO</option>
+				<option value="52">CHUCUL</option>
+				<option value="1">CORDOBA</option>
+				<option value="28">CORRALITO</option>
+				<option value="26">CR. ALMAFUERTE</option>
+				<option value="15">CR. BOWER</option>
+				<option value="19">CR. DESPE&#209;ADEROS</option>
+				<option value="16">CR. R.GARCIA</option>
+				<option value="22">CR. S.AGUSTIN</option>
+				<option value="24">CR. SOCONCHO</option>
+				<option value="47">DALMACIO VELEZ</option>
+				<option value="20">DESPE&#209;ADERO</option>
+				<option value="58">EL CRUCE</option>
+				<option value="41">EL PORTEZUELO</option>
+				<option value="31">EL QUEBRACHO</option>
+				<option value="40">EL TORREON</option>
+				<option value="33">EMBALSE</option>
+				<option value="44">FOTHERINGAM</option>
+				<option value="50">GRAL. CABRERA</option>
+				<option value="49">GRAL. DEHEZA</option>
+				<option value="45">HERNANDO</option>
+				<option value="34">HOTELES</option>
+				<option value="36">LA CRUZ</option>
+				<option value="65">LA LAGUNA</option>
+				<option value="25">LAS BAJADAS</option>
+				<option value="53">LAS HIGUERAS</option>
+				<option value="48">LAS PERDICES</option>
+				<option value="60">LUCA</option>
+				<option value="30">MONTE RALO</option>
+				<option value="56">OLIVA</option>
+				<option value="55">PAMPAYASTA</option>
+				<option value="64">PASCO</option>
+				<option value="14">RIO III</option>
+				<option value="54">RIO IV</option>
+				<option value="23">SAN AGUSTIN</option>
+				<option value="32">SANTA ISABEL</option>
+				<option value="42">SANTA ROSA</option>
+				<option value="43">TANCACHA</option>
+				<option value="63">TICINO</option>
+				<option value="35">USINA ATOMICA</option>
+				<option value="37">VILLA DEL DIQUE</option>
+				<option value="39">VILLA DEL PARQUE</option>
+				<option value="57">VILLA MARIA</option>
+				<option value="38">VILLA RUMIPAL</option>
+
+			</select></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label26"><font face="Verdana" size="3">C.P.:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtCP" type="text" maxlength="20" id="txtCP" /></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label12"><font face="Verdana" size="3">Telefono:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtTel" type="text" maxlength="20" id="txtTel" /></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <span id="Label14"><font face="Verdana" size="3">e-mail:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtMail" type="text" maxlength="50" id="txtMail" />
+                                                        </td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;&nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="vertical-align: middle; text-align: right; width: 50%;">
+                                                            <label for="chkUsrAbonado">Es Abonado</label><input id="chkUsrAbonado" type="checkbox" name="chkUsrAbonado" /></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                        </td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="vertical-align: middle; text-align: right; width: 50%;">
+                                                            <span id="Label25"><font face="Verdana" size="3">Nº de Abonado:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input name="txtNrAbonado" type="text" maxlength="20" readonly="readonly" id="txtNrAbonado" /></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="vertical-align: middle; text-align: right; width: 50%;">
+                                                            <span id="Label28"><font face="Verdana" size="3">Ruta Habitual:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <select name="ddlRuta" id="ddlRuta">
+				<option value="1">SIERRAS CHICAS</option>
+				<option value="2">RIO III x RUTA 36</option>
+				<option value="3">RIO III x RUTA 36 DIRECTO</option>
+				<option value="4">RIO III DIFERENCIAL</option>
+				<option value="5">RIO III x CORRALITO</option>
+				<option value="6">RIO III - SANTA ROSA</option>
+				<option value="7">RIO III - HERNANDO</option>
+				<option value="8">CBA - RIO IV x CABRERA</option>
+				<option value="9">CORDOBA - OLIVA</option>
+				<option value="10">RIO III - VILLA MARIA</option>
+				<option value="11">CORDOBA - LA LAGUNA</option>
+				<option value="12">CBA - RIO IV x CORRALITO</option>
+				<option value="13">CORDOBA - GRAL.CABRERA x R9</option>
+				<option value="14">CORDOBA - OLIVA x CORRALITO</option>
+				<option value="15">CBA - RIO IV x CABRERA DIRECTO</option>
+				<option value="16">CORDOBA - LA LAGUNA x CORRALITO</option>
+				<option value="17">CBA - RIO IV x CABRERA - ALMAF</option>
+				<option value="18">CBA - RIO IV x CABRERA DIRECTO - ALMAF</option>
+				<option value="19">RIO III x RUTA 36 DIRECTO x DESP.</option>
+				<option value="21">URBANO MENDIOLAZA</option>
+				<option value="22">URBANO UNQUILLO</option>
+				<option value="23">URBANO RIO CEBALLOS</option>
+				<option value="24">URBANO SALSIPUEDES</option>
+				<option value="25">BOWER</option>
+				<option value="26">SIERRAS CHICAS DIRECTO</option>
+				<option value="27">RIO CUARTO - EMBALSE</option>
+				<option value="28">TARJETA TIN</option>
+
+			</select></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="vertical-align: middle; text-align: right; width: 50%;">
+                                                            <span id="Label27" style="display:inline-block;"><font face="Verdana" size="3">Motivo Habitual de Viaje:</font></span></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <select name="ddlMotivo" id="ddlMotivo">
+				<option value="0"> </option>
+				<option value="1">Trabajo</option>
+				<option value="2">Estudio</option>
+				<option value="3">Placer</option>
+				<option value="4">Otro</option>
+				<option value="5">Turno m&#233;dico</option>
+				<option value="6">Tratamiento m&#233;dico</option>
+				<option value="7">Acompa&#241;ante</option>
+				<option value="8">Acompa&#241;ante s&#243;lo</option>
+				<option value="9">No informa motivo</option>
+
+			</select></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td style="text-align: right; width: 50%;">
+                                                            <input type="submit" name="btnRegUser" value="Registrar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnRegUser&quot;, &quot;&quot;, true, &quot;AddUsr&quot;, &quot;&quot;, false, false))" id="btnRegUser" /></td>
+                                                        <td style="text-align: left; width: 50%;">
+                                                            <input type="submit" name="btnCanRegUser" value="Cancelar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnCanRegUser&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnCanRegUser" /></td>
+                                                        <td style="text-align: left; width: 1%;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="1" style="text-align: right; width: 1%;">
+                                                        </td>
+                                                        <td colspan="2" style="text-align: center">
+                                                            </td>
+                                                        <td colspan="1" style="text-align: left; width: 1%;">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                
+                                            
+		</div>
+                                        
+	</div>
+                                    <div id="upPanelRecupCon">
+		
+                                            <div id="popUpPanelRecCont" class="ModalPopupPanel" align="center" style="display: none">
+			
+                                                <table style="text-align: center; width: 100%;">
+                                                    <tr>
+                                                        <td style="text-align: center" colspan="2">
+                                                            <span id="lblRECUPERARCONTRASEÑA"><b><font face="Verdana" color="Black" size="3">RECUPERAR CONTRASEÑA</font></b></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="width: 50%">
+                                                            <span id="Label18"><font face="Verdana" size="3">DNI - Usuario:</font></span></td>
+                                                        <td align="left" style="width: 50%">
+                                                            <input name="txtDocRec" type="text" id="txtDocRec" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="vertical-align: top; width: 50%">
+                                                            <span id="Label17"><font face="Verdana" size="3">e-mail:</font></span></td>
+                                                        <td align="left" style="width: 50%">
+                                                            <input name="txtMailRec" type="text" id="txtMailRec" />
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="width: 50%; height: 26px;">
+                                                            <input type="submit" name="btnRec" value="Recuperar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnRec&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnRec" /></td>
+                                                        <td align="left" style="width: 50%; height: 26px;">
+                                                            <input type="submit" name="btnCanRec" value="Cancelar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnCanRec&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnCanRec" /></td>
+                                                    </tr>
+                                                </table>
+                                                
+                                            
+		</div>
+                                        
+	</div><div id="upPanelReenvioMail">
+		
+                                            <div id="popUpPanelReenvio" class="ModalPopupPanel" align="center" style="display: none">
+			
+                                                <table style="text-align: center; width: 100%;">
+                                                    <tr>
+                                                        <td style="text-align: center" colspan="2">
+                                                            <span id="lblREENVIARMAIL"><b><font face="Verdana" color="Black" size="3">REENVIAR MAIL DE CONFIRMACION</font></b></span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="width: 50%">
+                                                            <span id="lblDniReenvio"><font face="Verdana" size="3">DNI - Usuario:</font></span></td>
+                                                        <td align="left" style="width: 50%">
+                                                            <input name="txtDocReenvio" type="text" id="txtDocReenvio" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="vertical-align: top; width: 50%">
+                                                            <span id="lblMailReenvio"><font face="Verdana" size="3">e-mail:</font></span></td>
+                                                        <td align="left" style="width: 50%">
+                                                            <input name="txtMailReenvio" type="text" id="txtMailReenvio" />
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="right" style="width: 50%; height: 26px;">
+                                                            <input type="submit" name="btnReenviar" value="Reenviar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnReenviar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnReenviar" /></td>
+                                                        <td align="left" style="width: 50%; height: 26px;">
+                                                            <input type="submit" name="btnCanReenvio" value="Cancelar" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnCanReenvio&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnCanReenvio" /></td>
+                                                    </tr>
+                                                </table>
+                                                
+                                            
+		</div>
+                                        
+	</div>
+                                    <div id="upPanelAnulaRes">
+		
+                                            <div id="popUpPanelAnulRes" class="ModalPopupPanel" align="center" style="display: none">
+			
+                                                <table style="text-align: center">
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td style="text-align: center" colspan="2">
+                                                            <span id="lblANULAR"><b><font face="Verdana" color="Black" size="3">RESERVAS PENDIENTES</font></b></span>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td align="right" colspan="2">
+                                                            <input type="submit" name="lkbAnularTodos" value="Anular Todas" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;lkbAnularTodos&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="lkbAnularTodos" /></td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td style="text-align: center" colspan="2">
+                                                            <div>
+
+			</div>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td align="right" style="width: 50%">
+                                                        </td>
+                                                        <td align="left" style="width: 50%">
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td style="text-align: center" colspan="2">
+                                                            <input type="submit" name="btnCanAnular" value="Salir" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnCanAnular&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnCanAnular" /></td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            
+		</div>
+                                        
+	</div>
+                                
+</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="z-index: 5;">
+                        <a class="trigger" href="#">
+                            <input type="image" name="imOpt1" id="imOpt1" title="Login" src="Imagenes/opciones.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;imOpt1&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" />
+                            opciones </a>
+                        
+                        <div id="upPanelLateral">
+	
+                                <div class="panel">
+                                    <input type="image" name="imLog" id="imLog" title="Iniciar Sesión" src="Imagenes/Login.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;imLog&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" />
+                                    <br />
+                                    <span id="lbllogin" class="optMenu">Iniciar Sesión</span>
+                                    <br />
+                                    <input type="image" name="imReg" id="imReg" title="Nuevo Usuario" src="Imagenes/NuevoUser.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;imReg&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" />
+                                    <br />
+                                    <span id="lblregis" class="optMenu">Registrarme</span>
+                                    <br />
+                                    <input type="image" name="imRes" id="imRes" title="Ver Reservas" src="Imagenes/MisReservas.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;imRes&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" />
+                                    <br />
+                                    <span id="lblreser" class="optMenu">Mis Reservas</span>
+                                    <br />
+                                    <input type="image" name="imEditUs" id="imEditUs" title="Editar Mis Datos" src="Imagenes/EditarUser.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;imEditUs&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" />
+                                    <br />
+                                    <span id="lblmisdatos" class="optMenu">Mis Datos</span>
+                                    <br />
+                                    <input type="image" name="imCerrar" id="imCerrar" title="Cerrar Sesión" src="Imagenes/Salir.png" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;imCerrar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" />
+                                    <br />
+                                    <span id="lblsalir" class="optMenu">Cerrar Sessión</span>
+                                </div>
+                            
+</div>
+                        &nbsp;
+                        <br />
+                    </div>
+                </td>
+            </tr>
+            <tr style="text-align: center">
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.FilteredTextBoxBehavior, {"ValidChars":"0123456789/","id":"ftbFechaBus"}, null, null, $get("txtFecha"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.CalendarBehavior, {"button":$get("txtFecha"),"format":"dd/MM/yyyy","id":"calBus","popupPosition":1}, null, null, $get("txtFecha"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"ModalBackground","PopupControlID":"popUpPanelLogin","PopupDragHandleControlID":"popUpPanelLogin","dynamicServicePath":"/horarios.aspx","id":"mpeLoguear"}, null, null, $get("lkbLoguear"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"ModalBackground","PopupControlID":"popUpPanelReserva","PopupDragHandleControlID":"popUpPanelReserva","dynamicServicePath":"/horarios.aspx","id":"mpeReservar"}, null, null, $get("lkbReserva"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"ModalBackground","PopupControlID":"popUpPanelRegisUer","PopupDragHandleControlID":"popUpPanelRegisUer","dynamicServicePath":"/horarios.aspx","id":"mpeRegistrar","repositionMode":0}, null, null, $get("lkbRegis"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"ModalBackground","PopupControlID":"popUpPanelAnulRes","PopupDragHandleControlID":"popUpPanelAnulRes","dynamicServicePath":"/horarios.aspx","id":"mpeAnular"}, null, null, $get("lkbAnular"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.FilteredTextBoxBehavior, {"FilterType":2,"id":"ftbDocLog"}, null, null, $get("txtDoc"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"ModalBackground","PopupControlID":"popUpPanelRecCont","PopupDragHandleControlID":"popUpPanelRecCont","dynamicServicePath":"/horarios.aspx","id":"mpeRecCon"}, null, null, $get("lkbCon"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"ModalBackground","PopupControlID":"popUpPanelReenvio","PopupDragHandleControlID":"popUpPanelReenvio","dynamicServicePath":"/horarios.aspx","id":"mpeReenvio"}, null, null, $get("lkbReenvio"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.FilteredTextBoxBehavior, {"FilterType":2,"id":"ftbDocReg"}, null, null, $get("txtDocReg"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.FilteredTextBoxBehavior, {"FilterType":2,"id":"ftbTel"}, null, null, $get("txtTel"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.FilteredTextBoxBehavior, {"FilterType":2,"ValidChars":"0123456789","id":"ftbNrAbo"}, null, null, $get("txtNrAbonado"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>
