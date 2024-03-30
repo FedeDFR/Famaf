@@ -44,9 +44,10 @@ char *parse_filepath(int argc, char *argv[]) {
 
     if (argc < 2) {
         print_help(argv[0]);
+        printf("F no anda");
         exit(EXIT_FAILURE);
     }
-
+    printf("anda maso");
     result = argv[1];
 
     return (result);

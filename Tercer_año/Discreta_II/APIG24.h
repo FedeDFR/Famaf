@@ -10,15 +10,12 @@
 #include "EstructuraGrafo24.h"
 
 
-
-
 //construcci'on/destrucci'on
 
 //debe leer desde stdin
 Grafo ConstruirGrafo();
 
 void DestruirGrafo(Grafo G);
-
 
 
 //funciones para extraer datos del grafo. u32 debe estar definida en el .h de arriba
@@ -30,20 +27,23 @@ u32 Delta(Grafo G);
 
 //funciones de extraccion de informacion de vertices 
 
-
 u32 Grado(u32 i,Grafo G);
 color Color(u32 i,Grafo G);
 u32 Vecino(u32 j,u32 i,Grafo G);
 
 
-
 //funciones con colores
-
 
 void AsignarColor(color x,u32 i,Grafo  G);
 void ExtraerColores(Grafo G,color* Color);
 void ImportarColores(color* Color,Grafo  G);
 
+
+//funciones de parseo
+
+void ingresar_verices_lados(Grafo G, FILE* file);
+void ingresar_lado(Grafo G, FILE* file);
+char *parse_filepath(int argc, char *argv[]);
 
 
 #endif

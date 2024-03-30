@@ -5,72 +5,99 @@
 #include "EstructuraGrafo24.h"
 
 
-Grafo ConstruirGrafo(){
+Grafo ConstruirGrafo(const char *filepath){
 
-    u32 guarda = 1;
-    u32 chek;
-    u32 n, m;
-    char tipo;
-    char trash[100];
-    
-    while (guarda) {
-        chek = scanf("%c", &tipo);
-        
-        if (chek == 1) {
-            if (tipo == 'p') {
-                guarda = 0;
-                chek = scanf(" edge %d %d\n", &n, &m);
-            } else if (tipo == 'c') {
-                chek = scanf("%c %[^\n]", &tipo, trash);
-            }
-        }
+    FILE *file = NULL;
+
+    file = fopen(filepath, "r");
+    if (file == NULL) {
+        fprintf(stderr, "File does not exist.\n");
+        exit(EXIT_FAILURE);
     }
 
     Grafo G = NULL;
     
+    ingresar_verices_lados(G, file);
+
+    for (size_t i = 0; i < G->lados; i++) {   
+        ingresar_lado(G, file);
+    }
+    
+    fclose(file);
+    return G;
+}
+
+void ingresar_verices_lados(Grafo G, FILE* file) {
+
+    u32 guarda = 1;
+    u32 chek;
+    u32 n, m;
+    u32 tipo;
+    char trash[100];
+
+    while (guarda) {
+        tipo = fgetc(file);
+        
+        if (tipo == 'p') {
+            guarda = 0;
+            chek = fscanf(file, " edge %u %u\n", &n, &m);
+            if (chek < 2) {
+                exit(EXIT_FAILURE);
+            }
+            
+        } else if (tipo == 'c') {
+            char *t = fgets(trash, 100, file);
+            if (t == NULL) {
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
+
+    G = malloc(sizeof(struct GrafoSt));
+
     G->nodos = malloc(sizeof(vertice) * n);
     G->cantnodos = n;
     G->lados = m;
     G->delta = 0;
-    for (size_t i = 0; i < n; i++)
-    {
+    
+    for (size_t i = 0; i < n; i++) {
+        G->nodos[i] = malloc(sizeof(struct _vertice));
         G->nodos[i]->vecinos = NULL;
         G->nodos[i]->grado = 0;
         G->nodos[i]->c = 0;
     }
-    
-    printf("%ls %ls", &n, &m);
-
-    u32 v, w;
-    for (size_t i = 0; i < m; i++) {   
-        chek = scanf("e %d %d\n", &v, &w);
-        
-        if (chek == 2) {
-            G->nodos[v]->grado++;
-            G->nodos[v]->vecinos = realloc(G->nodos[v]->vecinos, sizeof(u32) * G->nodos[v]->grado);
-            G->nodos[v]->vecinos[G->nodos[v]->grado - 1] = w;
-
-            G->nodos[w]->grado++;
-            G->nodos[w]->vecinos = realloc(G->nodos[w]->vecinos, sizeof(u32) * G->nodos[w]->grado);
-            G->nodos[w]->vecinos[G->nodos[w]->grado - 1] = v;
-
-            if (G->nodos[v]->grado > G->delta)
-            {
-                G->delta = G->nodos[v]->grado;
-            } else 
-                {
-                if (G->nodos[w]->grado > G->delta)
-                {
-                    G->delta = G->nodos[w]->grado;
-                }
-            }
-        }
-    }
-    
-    return G;
 }
 
+void ingresar_lado(Grafo G, FILE* file) {
 
+    u32 v, w;
+    u32 chek;
+
+    chek = fscanf(file, "e %u %u\n", &v, &w);
+
+    if (chek < 2) {
+        exit(EXIT_FAILURE);
+    }
+
+    G->nodos[v]->grado++;
+    G->nodos[v]->vecinos = realloc(G->nodos[v]->vecinos, sizeof(u32) * G->nodos[v]->grado);
+    G->nodos[v]->vecinos[G->nodos[v]->grado - 1] = w;
+
+    G->nodos[w]->grado++;
+    G->nodos[w]->vecinos = realloc(G->nodos[w]->vecinos, sizeof(u32) * G->nodos[w]->grado);
+    G->nodos[w]->vecinos[G->nodos[w]->grado - 1] = v;
+
+    if (G->nodos[v]->grado > G->delta)
+    {
+        G->delta = G->nodos[v]->grado;
+    } else 
+        {
+        if (G->nodos[w]->grado > G->delta)
+        {
+            G->delta = G->nodos[w]->grado;
+        }
+    }
+}
 
 
 void DestruirGrafo(Grafo G){
@@ -147,10 +174,14 @@ void ImportarColores(color* Color,Grafo  G){
     }
 }
 
-int main () {
-    Grafo G = ConstruirGrafo();
+char *parse_filepath(int argc, char *argv[]) {
 
-    printf("%ls", &G->delta);
+    char *result = NULL;
 
-    return 0;
+    if (argc < 2) {
+        exit(EXIT_FAILURE);
+    }
+
+    result = argv[1];
+    return (result);
 }
