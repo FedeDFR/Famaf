@@ -7,9 +7,24 @@
 
 Grafo ConstruirGrafo(){
 
-    // Vamos a hacer de cuenta que ya tengo el parceo de n y m
-    u32 n;
-    u32 m; 
+    u32 guarda = 1;
+    u32 chek;
+    u32 n, m;
+    char tipo;
+    char trash[100];
+    
+    while (guarda) {
+        chek = scanf("%c", &tipo);
+        
+        if (chek == 1) {
+            if (tipo == 'p') {
+                guarda = 0;
+                chek = scanf(" edge %d %d\n", &n, &m);
+            } else if (tipo == 'c') {
+                chek = scanf("%c %[^\n]", &tipo, trash);
+            }
+        }
+    }
 
     Grafo G = NULL;
     
@@ -24,27 +39,30 @@ Grafo ConstruirGrafo(){
         G->nodos[i]->c = 0;
     }
     
+    printf("%ls %ls", &n, &m);
 
     u32 v, w;
-    for (size_t i = 0; i < m; i++)
-    {
-        // Vamos a hacer de cuenta que ya tengo parseo de v y w
-        G->nodos[v]->grado++;
-        G->nodos[v]->vecinos = realloc(G->nodos[v]->vecinos, sizeof(u32) * G->nodos[v]->grado);
-        G->nodos[v]->vecinos[G->nodos[v]->grado - 1] = w;
+    for (size_t i = 0; i < m; i++) {   
+        chek = scanf("e %d %d\n", &v, &w);
+        
+        if (chek == 2) {
+            G->nodos[v]->grado++;
+            G->nodos[v]->vecinos = realloc(G->nodos[v]->vecinos, sizeof(u32) * G->nodos[v]->grado);
+            G->nodos[v]->vecinos[G->nodos[v]->grado - 1] = w;
 
-        G->nodos[w]->grado++;
-        G->nodos[w]->vecinos = realloc(G->nodos[w]->vecinos, sizeof(u32) * G->nodos[w]->grado);
-        G->nodos[w]->vecinos[G->nodos[w]->grado - 1] = v;
+            G->nodos[w]->grado++;
+            G->nodos[w]->vecinos = realloc(G->nodos[w]->vecinos, sizeof(u32) * G->nodos[w]->grado);
+            G->nodos[w]->vecinos[G->nodos[w]->grado - 1] = v;
 
-        if (G->nodos[v]->grado > G->delta)
-        {
-            G->delta = G->nodos[v]->grado;
-        } else 
+            if (G->nodos[v]->grado > G->delta)
             {
-            if (G->nodos[w]->grado > G->delta)
-            {
-                G->delta = G->nodos[w]->grado;
+                G->delta = G->nodos[v]->grado;
+            } else 
+                {
+                if (G->nodos[w]->grado > G->delta)
+                {
+                    G->delta = G->nodos[w]->grado;
+                }
             }
         }
     }
@@ -53,7 +71,14 @@ Grafo ConstruirGrafo(){
 }
 
 
+
+
 void DestruirGrafo(Grafo G){
+
+    free(G->nodos);
+    G->nodos = NULL;
+    free(G);
+    G = NULL;
 
 }
 
@@ -120,4 +145,12 @@ void ImportarColores(color* Color,Grafo  G){
     {
         G->nodos[i]->c = Color[i];
     }
+}
+
+int main () {
+    Grafo G = ConstruirGrafo();
+
+    printf("%ls", &G->delta);
+
+    return 0;
 }
