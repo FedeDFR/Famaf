@@ -5,29 +5,16 @@
 #include "EstructuraGrafo24.h"
 
 
-Grafo ConstruirGrafo(const char *filepath){
-
-    FILE *file = NULL;
-
-    file = fopen(filepath, "r");
-    if (file == NULL) {
-        fprintf(stderr, "File does not exist.\n");
-        exit(EXIT_FAILURE);
-    }
+Grafo ConstruirGrafo(){
 
     Grafo G = NULL;
     
-    ingresar_verices_lados(G, file);
+    ingresar_vertices_y_lados(G);
 
-    for (size_t i = 0; i < G->lados; i++) {   
-        ingresar_lado(G, file);
-    }
-    
-    fclose(file);
     return G;
 }
 
-void ingresar_verices_lados(Grafo G, FILE* file) {
+void ingresar_vertices_y_lados(Grafo G) {
 
     u32 guarda = 1;
     u32 chek;
@@ -36,24 +23,24 @@ void ingresar_verices_lados(Grafo G, FILE* file) {
     char trash[100];
 
     while (guarda) {
-        tipo = fgetc(file);
-        
+        tipo = fgetc(stdin);
+
         if (tipo == 'p') {
             guarda = 0;
-            chek = fscanf(file, " edge %u %u\n", &n, &m);
+            chek = fscanf(stdin, " edge %u %u\n", &n, &m);
             if (chek < 2) {
                 exit(EXIT_FAILURE);
             }
             
         } else if (tipo == 'c') {
-            char *t = fgets(trash, 100, file);
+            char *t = fgets(trash, 100, stdin);
             if (t == NULL) {
                 exit(EXIT_FAILURE);
             }
         }
     }
 
-    G = malloc(sizeof(struct GrafoSt));
+    G = malloc(sizeof(Grafo));
 
     G->nodos = malloc(sizeof(vertice) * n);
     G->cantnodos = n;
@@ -66,38 +53,39 @@ void ingresar_verices_lados(Grafo G, FILE* file) {
         G->nodos[i]->grado = 0;
         G->nodos[i]->c = 0;
     }
-}
 
-void ingresar_lado(Grafo G, FILE* file) {
+    for (u32 i = 0; i < NumeroDeLados(G); i++)  {
+    
+        u32 v, w;
+        u32 chek;
 
-    u32 v, w;
-    u32 chek;
+        chek = fscanf(stdin, "e %u %u\n", &v, &w);
+        
+        if (chek < 2) {
+            exit(EXIT_FAILURE);
+        }
+        
+        G->nodos[v]->grado++;
+        G->nodos[v]->vecinos = realloc(G->nodos[v]->vecinos, sizeof(u32) * G->nodos[v]->grado);
+        G->nodos[v]->vecinos[G->nodos[v]->grado - 1] = w;
 
-    chek = fscanf(file, "e %u %u\n", &v, &w);
-
-    if (chek < 2) {
-        exit(EXIT_FAILURE);
-    }
-
-    G->nodos[v]->grado++;
-    G->nodos[v]->vecinos = realloc(G->nodos[v]->vecinos, sizeof(u32) * G->nodos[v]->grado);
-    G->nodos[v]->vecinos[G->nodos[v]->grado - 1] = w;
-
-    G->nodos[w]->grado++;
-    G->nodos[w]->vecinos = realloc(G->nodos[w]->vecinos, sizeof(u32) * G->nodos[w]->grado);
-    G->nodos[w]->vecinos[G->nodos[w]->grado - 1] = v;
-
-    if (G->nodos[v]->grado > G->delta)
-    {
-        G->delta = G->nodos[v]->grado;
-    } else 
+        G->nodos[w]->grado++;
+        G->nodos[w]->vecinos = realloc(G->nodos[w]->vecinos, sizeof(u32) * G->nodos[w]->grado);
+        G->nodos[w]->vecinos[G->nodos[w]->grado - 1] = v;
+        
+        if (G->nodos[v]->grado > G->delta)
         {
-        if (G->nodos[w]->grado > G->delta)
-        {
-            G->delta = G->nodos[w]->grado;
+            G->delta = G->nodos[v]->grado;
+        } else 
+            {
+            if (G->nodos[w]->grado > G->delta)
+            {
+                G->delta = G->nodos[w]->grado;
+            }
         }
     }
 }
+
 
 
 void DestruirGrafo(Grafo G){

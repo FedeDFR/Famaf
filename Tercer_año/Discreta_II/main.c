@@ -4,14 +4,11 @@
 #include "APIG24.h"
 #include "EstructuraGrafo24.h"
 
-int main (int argc, char *argv[]) {
-    printf("Hola1\n");
-    char *filepath = NULL;
-    filepath = parse_filepath(argc, argv);
-    printf("HOLa4\n");
+int main () {
 
-    Grafo G = ConstruirGrafo(filepath);
+    Grafo G = ConstruirGrafo();
 
-    printf("%u\n", G->delta);
-    printf("Hola2\n");
+    printf("Hola2 %u\n", NumeroDeLados(G));
+
+    DestruirGrafo(G);
 }

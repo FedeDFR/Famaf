@@ -41,8 +41,7 @@ void ImportarColores(color* Color,Grafo  G);
 
 //funciones de parseo
 
-void ingresar_verices_lados(Grafo G, FILE* file);
-void ingresar_lado(Grafo G, FILE* file);
+void ingresar_vertices_y_lados(Grafo G);
 char *parse_filepath(int argc, char *argv[]);
 
 
