@@ -7,8 +7,11 @@
 
 Grafo ConstruirGrafo(){
 
+    //Creamos Grafo
     Grafo G = NULL;
+    G = malloc(sizeof(struct GrafoSt));
     
+    //Agregamos los vertices y lados
     ingresar_vertices_y_lados(G);
 
     return G;
@@ -39,14 +42,12 @@ void ingresar_vertices_y_lados(Grafo G) {
             }
         }
     }
-
-    G = malloc(sizeof(Grafo));
-
-    G->nodos = malloc(sizeof(vertice) * n);
+    
+    G->nodos = calloc(n , sizeof(struct _vertice));
     G->cantnodos = n;
     G->lados = m;
     G->delta = 0;
-    
+
     for (size_t i = 0; i < n; i++) {
         G->nodos[i] = malloc(sizeof(struct _vertice));
         G->nodos[i]->vecinos = NULL;
@@ -73,28 +74,32 @@ void ingresar_vertices_y_lados(Grafo G) {
         G->nodos[w]->vecinos = realloc(G->nodos[w]->vecinos, sizeof(u32) * G->nodos[w]->grado);
         G->nodos[w]->vecinos[G->nodos[w]->grado - 1] = v;
         
-        if (G->nodos[v]->grado > G->delta)
-        {
+        if (G->nodos[v]->grado > G->delta) {
+
             G->delta = G->nodos[v]->grado;
-        } else 
-            {
-            if (G->nodos[w]->grado > G->delta)
-            {
+        } else {
+
+            if (G->nodos[w]->grado > G->delta) {
                 G->delta = G->nodos[w]->grado;
             }
         }
-    }
+    }   
 }
 
+void DestruirGrafo(Grafo G) {
+    
+    for (u32 i = 0; i < NumeroDeVertices(G); i++) {
+        
+        free(G->nodos[i]->vecinos);
 
-
-void DestruirGrafo(Grafo G){
+        free(G->nodos[i]);
+    }
 
     free(G->nodos);
-    G->nodos = NULL;
+    
     free(G);
-    G = NULL;
 
+    G = NULL; 
 }
 
 u32 NumeroDeVertices(Grafo G){
@@ -160,16 +165,4 @@ void ImportarColores(color* Color,Grafo  G){
     {
         G->nodos[i]->c = Color[i];
     }
-}
-
-char *parse_filepath(int argc, char *argv[]) {
-
-    char *result = NULL;
-
-    if (argc < 2) {
-        exit(EXIT_FAILURE);
-    }
-
-    result = argv[1];
-    return (result);
 }

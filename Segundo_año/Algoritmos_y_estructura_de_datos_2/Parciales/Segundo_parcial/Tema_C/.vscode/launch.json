@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/fede/Documentos/GitHub/Famaf/Tercer_año/Discreta_II",
-      "program": "/home/fede/Documentos/GitHub/Famaf/Tercer_año/Discreta_II/build/Debug/outDebug",
+      "cwd": "/home/fede/Documentos/GitHub/Famaf/Segundo_año/Algoritmos_y_estructura_de_datos_2/Parciales/Segundo_parcial/Tema_C",
+      "program": "/home/fede/Documentos/GitHub/Famaf/Segundo_año/Algoritmos_y_estructura_de_datos_2/Parciales/Segundo_parcial/Tema_C/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

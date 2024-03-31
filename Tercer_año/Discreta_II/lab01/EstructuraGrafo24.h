@@ -4,7 +4,7 @@
 
 typedef unsigned int u32;
 
-typedef struct _vertice vertice;
+typedef struct _vertice * vertice;
 
 typedef struct GrafoSt * Grafo;
 
@@ -17,7 +17,7 @@ struct _vertice{
 };
 
 struct GrafoSt{
-    vertice **nodos;
+    vertice *nodos;
     u32 cantnodos;
     u32 lados;
     u32 delta;    
