@@ -4,7 +4,7 @@
 
 Vamos a compilar con g++, escribo en la terminal
 
-g++ "fiel.cpp"
+g++ -Wall -std=c++17 "fiel.cpp"
 
 luego 
 
