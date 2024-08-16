@@ -1,0 +1,15 @@
+grupo43/utils/UserInterface.class
+grupo43/namedEntities/NamedEntity.class
+grupo43/namedEntities/heuristics/CapitalizedWordHeuristic.class
+grupo43/utils/JSONParser.class
+grupo43/namedEntities/heuristics/MayusculasMejoradas.class
+grupo43/namedEntities/categories/Location.class
+grupo43/utils/DictionaryData.class
+grupo43/namedEntities/categories/Person.class
+grupo43/namedEntities/heuristics/NoSustantivosPropios.class
+grupo43/utils/Option.class
+grupo43/App.class
+grupo43/utils/Config.class
+grupo43/utils/GramaticaData.class
+grupo43/utils/Stats.class
+grupo43/namedEntities/categories/Organization.class
