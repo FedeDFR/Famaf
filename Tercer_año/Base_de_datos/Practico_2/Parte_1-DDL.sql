@@ -68,7 +68,7 @@ CREATE TABLE continent (
 	MostPopuCity VARCHAR(100),
 	
 	PRIMARY KEY (Name)
-)
+);
 
 -- Paso 5:
 

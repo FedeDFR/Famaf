@@ -22,7 +22,7 @@ LIMIT 10;
 SELECT country.Name, Continent, countrylanguage.Language
 FROM countrylanguage
 LEFT JOIN country ON country.Code = countrylanguage.CountryCode
-WHERE countrylanguage.IsOfficial = TRUE
+WHERE countrylanguage.IsOfficial = TRUE;
 
 
 -- Query 4:
@@ -39,7 +39,7 @@ SELECT city.Name, countrylanguage.Language, countrylanguage.Percentage
 FROM city
 JOIN countrylanguage ON city.CountryCode = countrylanguage.CountryCode
 WHERE countrylanguage.IsOfficial = TRUE
-ORDER BY city.Population DESC
+ORDER BY city.Population DESC;
 
 -- Query 6:
 
@@ -56,7 +56,7 @@ ORDER BY city.Population DESC
     WHERE city.Population > 100
     ORDER BY city.Population ASC
     LIMIT 10
-)
+);
 
 -- Query 7:
 
@@ -72,7 +72,7 @@ ORDER BY city.Population DESC
     FROM country
     JOIN countrylanguage ON country.Code = countrylanguage.CountryCode
     WHERE countrylanguage.Language = 'English' OR countrylanguage.Language = 'French'
-)
+);
 
 -- Query 8:
 
@@ -88,4 +88,4 @@ ORDER BY city.Population DESC
     FROM country
     JOIN countrylanguage ON country.Code = countrylanguage.CountryCode
     WHERE countrylanguage.Language = 'Spanish' 
-)
+);
