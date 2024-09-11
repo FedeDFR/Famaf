@@ -1,6 +1,8 @@
 
 -- Parte 2 - Preguntas
 
+USE world;
+
 -- 1) ¿Devuelven los mismos valores las siguientes consultas? ¿Por qué?
 
 SELECT city.Name, country.Name

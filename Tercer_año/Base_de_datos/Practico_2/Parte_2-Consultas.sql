@@ -1,5 +1,7 @@
 -- Parte 1 - Consultas
 
+USE world;
+
 -- Query 1:
 
 SELECT Name, Region

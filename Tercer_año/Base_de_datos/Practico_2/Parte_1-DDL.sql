@@ -1,6 +1,8 @@
 
 -- PARTE 1 - DDL
 
+USE world;
+
 -- Paso 2:
 
 CREATE TABLE country (

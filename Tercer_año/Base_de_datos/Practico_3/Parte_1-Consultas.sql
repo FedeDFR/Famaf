@@ -1,6 +1,8 @@
 
 -- Parte 1 - Consultas
 
+USE world;
+
 -- Query 1:
 
 SELECT city.Name, country.Name, country.Region, country.GovernmentForm, city.Population
